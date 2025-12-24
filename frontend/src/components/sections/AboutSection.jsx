@@ -18,8 +18,8 @@ export const AboutSection = () => {
 
   return (
     <section id="about" className="py-[72px] bg-white">
-      <div className="container max-w-[1200px] mx-auto px-4 grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-start">
-        <div data-aos="fade-up" className="space-y-6">
+      <div className="container max-w-[900px] mx-auto px-4 flex flex-col items-center gap-10">
+        <div data-aos="fade-up" className="space-y-6 text-center">
           <h2 className="heading-1">{heading}</h2>
           <p className="body-large">
             {intro}
