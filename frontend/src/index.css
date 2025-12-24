@@ -78,7 +78,11 @@ code {
         @apply border-border;
     }
     body {
-  :root {
+        @apply bg-background text-foreground;
+    }
+}
+
+:root {
     --bg-page: #FAFFEE;
     --bg-card: #FAFAFF;
     --bg-subtle: #EDEDFE;
