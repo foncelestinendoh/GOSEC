@@ -2,7 +2,7 @@ import React from "react";
 
 export const HomeHeroImageStrip = () => {
   return (
-    <section className="mt-24 md:mt-32 lg:mt-40 py-[40px] bg-white">
+    <section className="mt-12 md:mt-16 lg:mt-20 py-[40px] bg-white">
       <div className="container max-w-[1100px] mx-auto px-4">
         <div
           className="rounded-3xl overflow-hidden shadow-md"
