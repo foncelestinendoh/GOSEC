@@ -36,7 +36,7 @@ export const AboutSection = () => {
               </div>
               <div className="h-40 md:h-48 w-full overflow-hidden rounded-3xl shadow-md">
                 <img
-                  src="https://images.pexels.com/photos/7551734/pexels-photo-7551734.jpeg?w=900&auto=compress&cs=tinysrgb"
+                  src="https://images.pexels.com/photos/9553914/pexels-photo-9553914.jpeg?w=900&auto=compress&cs=tinysrgb"
                   alt={
                     isEn
                       ? "Afro-descendant youth looking toward a bright horizon, symbolizing future vision"
