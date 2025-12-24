@@ -197,10 +197,6 @@ code {
     }
   }
 
-    line-height: 1.4;
-    color: var(--text-light);
-  }
-
   .button-text {
     font-size: clamp(1rem, 2vw, 1.125rem);
     font-weight: 600;
