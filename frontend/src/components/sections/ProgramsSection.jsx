@@ -38,35 +38,35 @@ export const ProgramsSection = () => {
                     <img
                       src="https://images.pexels.com/photos/4933853/pexels-photo-4933853.jpeg?w=900&auto=compress&cs=tinysrgb"
                       alt="Children playing soccer together on a field"
-                      className="w-64 h-64 object-cover rounded-2xl"
+                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
                     />
                   )}
                   {cat.id === "family" && (
                     <img
                       src="https://images.unsplash.com/photo-1758612897496-e4db98c26ad3?auto=format&fit=crop&w=900&q=80"
                       alt="Family with a soccer ball enjoying time together"
-                      className="w-64 h-64 object-cover rounded-2xl"
+                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
                     />
                   )}
                   {cat.id === "careers" && (
                     <img
                       src="https://images.pexels.com/photos/264337/pexels-photo-264337.jpeg?w=900&auto=compress&cs=tinysrgb"
                       alt="Coach giving advice to a young player on the field"
-                      className="w-64 h-64 object-cover rounded-2xl"
+                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
                     />
                   )}
                   {cat.id === "youth" && (
                     <img
                       src="https://images.unsplash.com/photo-1622659097509-4d56de14539e?auto=format&fit=crop&w=900&q=80"
                       alt="Youth soccer players celebrating together"
-                      className="w-64 h-64 object-cover rounded-2xl"
+                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
                     />
                   )}
                   {cat.id === "culture" && (
                     <img
                       src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
                       alt="Community members gathered at a cultural event"
-                      className="w-64 h-64 object-cover rounded-2xl"
+                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
                     />
                   )}
                 </div>
