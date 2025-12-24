@@ -1,6 +1,21 @@
 import React from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const AboutSection = () => {
+  const { language } = useLanguage();
+  const isEn = language === "en";
+
+  const heading = isEn ? "About GOSEC" : "À propos de GOSEC";
+  const intro = isEn
+    ? "GOSEC is a non-profit community club that uses soccer, culture, and education to support youth, families, newcomers, and community members in Gatineau and Ottawa."
+    : "GOSEC est un organisme à but non lucratif qui utilise le soccer, la culture et l’éducation pour soutenir les jeunes, les familles, les nouveaux arrivants et la communauté à Gatineau et Ottawa.";
+  const mission = isEn
+    ? "To promote inclusion, healthy living, and personal growth through sports, culture, and career integration."
+    : "Promouvoir l’inclusion, le bien-être et le développement personnel par le sport, la culture et l’intégration professionnelle.";
+  const vision = isEn
+    ? "A strong, inclusive, and connected community across Gatineau and Ottawa."
+    : "Une communauté forte, inclusive et solidaire reliant Gatineau et Ottawa.";
+
   return (
     <section id="about" className="py-[72px] bg-white">
       <div className="container max-w-[1200px] mx-auto px-4 grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-start">

@@ -6,8 +6,14 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
   const { titleEn, titleFr, subtitleEn, subtitleFr } = sections.hero;
   const { language } = useLanguage();
-  const title = language === "en" ? titleEn : titleFr;
-  const subtitle = language === "en" ? subtitleEn : subtitleFr;
+  const isEn = language === "en";
+  const title = isEn ? titleEn : titleFr;
+  const subtitle = isEn ? subtitleEn : subtitleFr;
+  const heroLabel = isEn
+    ? "GOSEC – Gatineau Ottawa Social Elite Club"
+    : "GOSEC – Club Social d’Élite Gatineau Ottawa";
+  const joinLabel = isEn ? "Join Our Programs" : "Rejoindre un programme";
+  const memberLabel = isEn ? "Become a Member" : "Devenir membre";
 
   return (
     <section
