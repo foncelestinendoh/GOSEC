@@ -33,58 +33,60 @@ export const ProgramsSection = () => {
               className="network-card border-0 p-0 overflow-hidden hover-lift"
             >
               <Link to={`/programs/${cat.id}`} className="block h-full">
-                <div className="py-4 flex justify-center">
-                  {cat.id === "soccer" && (
-                    <img
-                      src="https://images.pexels.com/photos/4933853/pexels-photo-4933853.jpeg?w=900&auto=compress&cs=tinysrgb"
-                      alt="Children playing soccer together on a field"
-                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
-                    />
-                  )}
-                  {cat.id === "family" && (
-                    <img
-                      src="https://images.unsplash.com/photo-1758612897496-e4db98c26ad3?auto=format&fit=crop&w=900&q=80"
-                      alt="Family with a soccer ball enjoying time together"
-                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
-                    />
-                  )}
-                  {cat.id === "careers" && (
-                    <img
-                      src="https://images.pexels.com/photos/264337/pexels-photo-264337.jpeg?w=900&auto=compress&cs=tinysrgb"
-                      alt="Coach giving advice to a young player on the field"
-                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
-                    />
-                  )}
-                  {cat.id === "youth" && (
-                    <img
-                      src="https://images.unsplash.com/photo-1622659097509-4d56de14539e?auto=format&fit=crop&w=900&q=80"
-                      alt="Youth soccer players celebrating together"
-                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
-                    />
-                  )}
-                  {cat.id === "culture" && (
-                    <img
-                      src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
-                      alt="Community members gathered at a cultural event"
-                      className="w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl"
-                    />
-                  )}
-                </div>
-                <div className="p-6">
-                  <CardHeader className="p-0 mb-3">
-                    <CardTitle className="network-card-title">
-                      {cat.titleEn}
-                      <span className="block mt-1">{cat.titleFr}</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                    <p className="body-medium">
-                      {cat.descriptionEn}
-                      <span className="block mt-1 body-small">
-                        {cat.descriptionFr}
-                      </span>
-                    </p>
-                  </CardContent>
+                <div className="flex flex-col md:flex-row items-center gap-6 p-6">
+                  <div className="flex justify-center md:justify-start flex-shrink-0">
+                    {cat.id === "soccer" && (
+                      <img
+                        src="https://images.pexels.com/photos/4933853/pexels-photo-4933853.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Children playing soccer together on a field"
+                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
+                      />
+                    )}
+                    {cat.id === "family" && (
+                      <img
+                        src="https://images.unsplash.com/photo-1758612897496-e4db98c26ad3?auto=format&fit=crop&w=900&q=80"
+                        alt="Family with a soccer ball enjoying time together"
+                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
+                      />
+                    )}
+                    {cat.id === "careers" && (
+                      <img
+                        src="https://images.pexels.com/photos/264337/pexels-photo-264337.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Coach giving advice to a young player on the field"
+                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
+                      />
+                    )}
+                    {cat.id === "youth" && (
+                      <img
+                        src="https://images.unsplash.com/photo-1622659097509-4d56de14539e?auto=format&fit=crop&w=900&q=80"
+                        alt="Youth soccer players celebrating together"
+                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
+                      />
+                    )}
+                    {cat.id === "culture" && (
+                      <img
+                        src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
+                        alt="Community members gathered at a cultural event"
+                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
+                      />
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <CardHeader className="p-0 mb-3">
+                      <CardTitle className="network-card-title">
+                        {cat.titleEn}
+                        <span className="block mt-1">{cat.titleFr}</span>
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                      <p className="body-medium">
+                        {cat.descriptionEn}
+                        <span className="block mt-1 body-small">
+                          {cat.descriptionFr}
+                        </span>
+                      </p>
+                    </CardContent>
+                  </div>
                 </div>
               </Link>
             </Card>
