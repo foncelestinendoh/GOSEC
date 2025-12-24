@@ -29,16 +29,25 @@ export const AboutSection = () => {
               <h3 className="heading-3 mb-2 text-black">{isEn ? "Mission" : "Mission"}</h3>
               <p className="max-w-2xl mx-auto">{mission}</p>
             </div>
-            <div>
-              <h3 className="heading-3 mb-2 text-black">{isEn ? "Vision" : "Vision"}</h3>
-              <p className="max-w-2xl mx-auto">{vision}</p>
+            <div className="grid md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-6 items-center text-left md:text-left">
+              <div>
+                <h3 className="heading-3 mb-2 text-black">{isEn ? "Vision" : "Vision"}</h3>
+                <p className="max-w-2xl mx-auto">{vision}</p>
+              </div>
+              <div className="h-40 md:h-48 w-full overflow-hidden rounded-3xl shadow-md">
+                <img
+                  src="https://images.pexels.com/photos/7551734/pexels-photo-7551734.jpeg?w=900&auto=compress&cs=tinysrgb"
+                  alt={
+                    isEn
+                      ? "Afro-descendant youth looking toward a bright horizon, symbolizing future vision"
+                      : "Jeunes afro-descendants regardant vers l’horizon, symbolisant une vision d’avenir"
+                  }
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div
-          data-aos="zoom-in"
-          className="network-card body-small space-y-4 p-0 overflow-hidden max-w-xl"
-        >
           <div className="h-60 w-full overflow-hidden">
             <img
               src="https://images.pexels.com/photos/18414880/pexels-photo-18414880.jpeg?w=900&auto=compress&cs=tinysrgb"
