@@ -15,8 +15,8 @@ export const SiteFooter = () => {
             </span>
           </div>
         </div>
-        <div className="space-y-3 text-xs md:text-right max-w-md">
-          <div>
+        <div className="flex flex-col md:flex-row gap-6 text-xs md:text-right max-w-xl md:justify-end">
+          <div className="space-y-1 md:text-left">
             <div className="font-semibold text-[var(--text-primary)] mb-1">
               Address / Adresse
             </div>
@@ -28,7 +28,7 @@ export const SiteFooter = () => {
               Gatineau–Ottawa, QC
             </p>
           </div>
-          <div>
+          <div className="space-y-1 md:text-left">
             <div className="font-semibold text-[var(--text-primary)] mb-1">
               Opening hours / Heures d’ouverture
             </div>
@@ -38,7 +38,7 @@ export const SiteFooter = () => {
               Sat–Sun / Sam–Dim: Events & tournaments
             </p>
           </div>
-          <div>
+          <div className="space-y-1 md:text-left">
             <div className="font-semibold text-[var(--text-primary)] mb-1">
               Location
             </div>
@@ -55,8 +55,14 @@ export const SiteFooter = () => {
               </a>
             </p>
           </div>
-          <div className="pt-1">© GOSEC – Tous droits réservés</div>
         </div>
+      </div>
+      <div className="border-t border-[var(--border-light)] bg-[#EFEFEF] mt-4">
+        <div className="container max-w-[1200px] mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2 text-[10px] text-[var(--text-light)]">
+          <span>Based in Gatineau and Ottawa / Basé à Gatineau et Ottawa</span>
+          <span>© GOSEC – Tous droits réservés</span>
+        </div>
+      </div>
       </div>
     </footer>
   );
