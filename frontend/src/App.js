@@ -45,7 +45,7 @@ const Home = () => {
             element={
               <HomePage
                 onOpenJoin={() => setOpenJoin(true)}
-                onOpenMember={() => setOpenMember(true)}
+                onOpenMember={() => setOpenDonate(true)}
               />
             }
           />
