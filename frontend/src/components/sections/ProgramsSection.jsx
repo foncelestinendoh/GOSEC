@@ -67,8 +67,8 @@ export const ProgramsSection = () => {
                     )}
                     {cat.id === "careers" && (
                       <img
-                        src="https://images.pexels.com/photos/264337/pexels-photo-264337.jpeg?w=900&auto=compress&cs=tinysrgb"
-                        alt="Coach giving advice to a young player on the field"
+                        src="https://images.pexels.com/photos/1181400/pexels-photo-1181400.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Students at a job fair talking with recruiters"
                         className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
                       />
                     )}
