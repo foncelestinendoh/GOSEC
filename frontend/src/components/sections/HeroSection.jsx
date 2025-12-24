@@ -22,18 +22,18 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
     >
       <div className="absolute inset-0 -z-10">
         <img
-          src="https://images.unsplash.com/photo-1604651684573-05470013b3b9?auto=format&fit=crop&w=1600&q=80"
+          src="https://images.unsplash.com/photo-1604651684573-05470013b3b9?auto=format&fit=crop&w=1800&q=80"
           alt="Community members playing soccer together in a park"
-          className="h-full w-full object-cover opacity-35"
+          className="h-full w-full object-cover opacity-45"
         />
-        <div className="absolute inset-0 bg-[rgba(250,255,238,0.9)]" />
+        <div className="absolute inset-0 bg-[rgba(211,255,98,0.35)]" />
       </div>
       <div className="container max-w-[1100px] mx-auto px-4 flex items-center justify-start">
         <div data-aos="fade-up" className="hero-panel space-y-5 max-w-2xl">
           <p className="uppercase tracking-[0.12em] text-xs text-[var(--text-secondary)]">
             {heroLabel}
           </p>
-          <h1 className="heading-1">
+          <h1 className="heading-1 text-black">
             {title}
           </h1>
           <p className="body-medium max-w-xl">
@@ -46,14 +46,14 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Button
-              className="btn-cta button-text"
+              className="btn-cta button-text bg-[var(--brand-primary)] text-black"
               onClick={onOpenJoin}
             >
               {joinLabel}
             </Button>
             <Button
               variant="outline"
-              className="btn-secondary button-text border-0"
+              className="btn-secondary button-text border border-black text-black"
               onClick={onOpenMember}
             >
               {memberLabel}
