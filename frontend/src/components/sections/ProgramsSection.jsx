@@ -2,9 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { sections } from "@/mock/gosecMock";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const ProgramsSection = () => {
   const { categories } = sections.programs;
+  const { language } = useLanguage();
+  const isEn = language === "en";
 
   return (
     <section id="programs" className="py-[72px] bg-[#F7F7F7]">
