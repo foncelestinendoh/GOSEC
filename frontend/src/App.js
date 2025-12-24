@@ -25,8 +25,8 @@ const Home = () => {
     toast.success(
       type === "join"
         ? "Thank you – your interest in GOSEC programs has been saved locally (mock)."
-        : type === "member"
-        ? "Your membership request has been stored locally (mock)."
+        : type === "donate"
+        ? "Thank you – your donation pledge has been stored locally (mock)."
         : "Your contact request has been stored locally (mock)."
     );
   };
