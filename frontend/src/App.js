@@ -14,6 +14,7 @@ import ProgramsPage from "@/pages/ProgramsPage";
 import FAQPage from "@/pages/FAQPage";
 import ContactPage from "@/pages/ContactPage";
 import ProgramDetailPage from "@/pages/ProgramDetailPage";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const Home = () => {
   const [openJoin, setOpenJoin] = useState(false);
@@ -83,7 +84,9 @@ const Home = () => {
 function App() {
   return (
     <BrowserRouter>
-      <Home />
+      <LanguageProvider>
+        <Home />
+      </LanguageProvider>
     </BrowserRouter>
   );
 }

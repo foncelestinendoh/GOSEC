@@ -1,9 +1,13 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { sections } from "@/mock/gosecMock";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
   const { titleEn, titleFr, subtitleEn, subtitleFr } = sections.hero;
+  const { language } = useLanguage();
+  const title = language === "en" ? titleEn : titleFr;
+  const subtitle = language === "en" ? subtitleEn : subtitleFr;
 
   return (
     <section

@@ -1,14 +1,25 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
   const location = useLocation();
+  const { language, setLanguage } = useLanguage();
 
   const isActive = (path) => location.pathname === path;
 
   const navLinkClass = (path) =>
     `network-nav-link ${isActive(path) ? "font-semibold" : ""}`;
+
+  const labels = {
+    about: language === "en" ? "About" : "À propos",
+    programs: language === "en" ? "Programs" : "Programmes",
+    faqs: language === "en" ? "FAQs" : "FAQ",
+    contact: language === "en" ? "Contact" : "Contact",
+    join: language === "en" ? "Join" : "Rejoindre",
+    member: language === "en" ? "Member" : "Membre",
+  };
 
   return (
     <header className="network-header">
@@ -18,28 +29,48 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
         </Link>
         <nav className="network-nav">
           <Link to="/about" className={navLinkClass("/about")}>
-            About / À propos
+            {labels.about}
           </Link>
           <Link to="/programs" className={navLinkClass("/programs")}>
-            Programs / Programmes
+            {labels.programs}
           </Link>
           <Link to="/faqs" className={navLinkClass("/faqs")}>
-            FAQs
+            {labels.faqs}
           </Link>
           <Link to="/contact" className={navLinkClass("/contact")}>
-            Contact
+            {labels.contact}
           </Link>
         </nav>
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center rounded-full border border-[var(--border-light)] bg-white px-1 py-1 text-xs">
+            <button
+              type="button"
+              className={`px-2 py-1 rounded-full ${
+                language === "en" ? "bg-[var(--brand-dark)] text-white" : "text-[var(--text-primary)]"
+              }`}
+              onClick={() => setLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              className={`px-2 py-1 rounded-full ${
+                language === "fr" ? "bg-[var(--brand-dark)] text-white" : "text-[var(--text-primary)]"
+              }`}
+              onClick={() => setLanguage("fr")}
+            >
+              FR
+            </button>
+          </div>
           <Button className="btn-small btn-primary" onClick={onJoinClick}>
-            Join / Rejoindre
+            {labels.join}
           </Button>
           <Button
             variant="outline"
             className="btn-small btn-secondary"
             onClick={onMemberClick}
           >
-            Member / Membre
+            {labels.member}
           </Button>
         </div>
       </div>
