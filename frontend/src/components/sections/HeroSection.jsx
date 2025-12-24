@@ -22,11 +22,11 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
     >
       <div className="absolute inset-0 -z-10">
         <img
-          src="https://images.unsplash.com/photo-1604651684573-05470013b3b9?auto=format&fit=crop&w=1800&q=80"
-          alt="Community members playing soccer together in a park"
-          className="h-full w-full object-cover opacity-45"
+          src="https://images.pexels.com/photos/3228769/pexels-photo-3228769.jpeg?w=1800&auto=compress&cs=tinysrgb"
+          alt="Vibrant community scene with people and colorful lights"
+          className="h-full w-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-[rgba(211,255,98,0.35)]" />
+        <div className="absolute inset-0 bg-[rgba(255,255,255,0.78)]" />
       </div>
       <div className="container max-w-[1100px] mx-auto px-4 flex items-center justify-center">
         <div data-aos="fade-up" className="hero-panel space-y-5 max-w-2xl mx-auto text-center">
@@ -36,24 +36,24 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
           <h1 className="heading-1 text-black">
             {title}
           </h1>
-          <p className="body-medium max-w-xl">
+          <p className="body-medium max-w-xl text-black/80">
             {subtitle}
           </p>
-          <p className="body-small max-w-xl text-[var(--text-secondary)]">
+          <p className="body-small max-w-xl text-black/70">
             {isEn
               ? "Using soccer, culture, and education to support youth, families, and newcomers across Gatineau and Ottawa."
               : "Utiliser le soccer, la culture et l’éducation pour soutenir les jeunes, les familles et les nouveaux arrivants à Gatineau et Ottawa."}
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Button
-              className="btn-cta button-text bg-[var(--brand-primary)] text-black"
+              className="btn-cta button-text bg-[#e53935] hover:bg-[#c62828] text-white"
               onClick={onOpenJoin}
             >
               {joinLabel}
             </Button>
             <Button
               variant="outline"
-              className="btn-secondary button-text border border-black text-black"
+              className="btn-secondary button-text border border-[#1565c0] text-[#1565c0] hover:bg-[#1565c0] hover:text-white"
               onClick={onOpenMember}
             >
               {memberLabel}
