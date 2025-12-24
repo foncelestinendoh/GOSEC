@@ -24,7 +24,7 @@ export const AboutSection = () => {
           <p className="body-large">
             {intro}
           </p>
-          <div className="grid md:grid-cols-2 gap-6 body-medium">
+          <div className="grid md:grid-cols-2 gap-6 body-medium text-left md:text-left">
             <div>
               <h3 className="heading-3 mb-2">{isEn ? "Mission" : "Mission"}</h3>
               <p>{mission}</p>
@@ -37,7 +37,7 @@ export const AboutSection = () => {
         </div>
         <div
           data-aos="zoom-in"
-          className="network-card body-small space-y-4 p-0 overflow-hidden"
+          className="network-card body-small space-y-4 p-0 overflow-hidden max-w-xl"
         >
           <div className="h-60 w-full overflow-hidden">
             <img
