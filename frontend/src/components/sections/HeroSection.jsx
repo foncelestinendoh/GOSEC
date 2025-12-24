@@ -13,7 +13,7 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
     ? "GOSEC – Gatineau Ottawa Social Elite Club"
     : "GOSEC – Club Social d’Élite Gatineau Ottawa";
   const joinLabel = isEn ? "Join Our Programs" : "Rejoindre un programme";
-  const memberLabel = isEn ? "Become a Member" : "Devenir membre";
+  const memberLabel = isEn ? "Donate" : "Faire un don";
 
   return (
     <section

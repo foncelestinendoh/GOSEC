@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster, toast } from "@/components/ui/sonner";
 import GosecLayout from "@/components/GosecLayout";
 import { JoinProgramDialog } from "@/components/sections/forms/JoinProgramDialog";
-import { BecomeMemberDialog } from "@/components/sections/forms/BecomeMemberDialog";
+import { DonateDialog } from "@/components/sections/forms/DonateDialog";
 import { ContactDialog } from "@/components/sections/forms/ContactDialog";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -18,7 +18,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const Home = () => {
   const [openJoin, setOpenJoin] = useState(false);
-  const [openMember, setOpenMember] = useState(false);
+  const [openDonate, setOpenDonate] = useState(false);
   const [openContact, setOpenContact] = useState(false);
 
   const handleFormSubmitted = (type) => {

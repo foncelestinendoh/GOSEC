@@ -18,7 +18,7 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
     faqs: language === "en" ? "FAQs" : "FAQ",
     contact: language === "en" ? "Contact" : "Contact",
     join: language === "en" ? "Join" : "Rejoindre",
-    member: language === "en" ? "Member" : "Membre",
+    member: language === "en" ? "Donate" : "Donner",
   };
 
   return (
