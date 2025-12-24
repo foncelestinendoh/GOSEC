@@ -178,6 +178,10 @@ code {
   .caption {
     font-size: clamp(0.75rem, 1vw, 0.875rem);
     font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-light);
+  }
+
   .hero-panel {
     background: #FFFFFF;
     border-radius: 32px;
