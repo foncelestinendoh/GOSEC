@@ -63,7 +63,6 @@ export const SiteFooter = () => {
           <span>© GOSEC – Tous droits réservés</span>
         </div>
       </div>
-      </div>
     </footer>
   );
 };
