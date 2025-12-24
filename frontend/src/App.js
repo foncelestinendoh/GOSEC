@@ -35,17 +35,26 @@ const Home = () => {
         onJoinClick={() => setOpenJoin(true)}
         onMemberClick={() => setOpenMember(true)}
         onContactClick={() => setOpenContact(true)}
-        onNavigate={scrollToId}
       />
       <main>
-        <HeroSection
-          onOpenJoin={() => setOpenJoin(true)}
-          onOpenMember={() => setOpenMember(true)}
-        />
-        <AboutSection />
-        <ProgramsSection />
-        <FAQSection />
-        <ContactSection />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                onOpenJoin={() => setOpenJoin(true)}
+                onOpenMember={() => setOpenMember(true)}
+              />
+            }
+          />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/programs" element={<ProgramsPage />} />
+          <Route path="/faqs" element={<FAQPage />} />
+          <Route
+            path="/contact"
+            element={<ContactPage onOpenContact={() => setOpenContact(true)} />}
+          />
+        </Routes>
       </main>
       <SiteFooter />
 
@@ -72,9 +81,7 @@ const Home = () => {
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <Home />
     </BrowserRouter>
   );
 }
