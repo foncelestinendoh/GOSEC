@@ -48,11 +48,14 @@ export const AboutSection = () => {
           </div>
           <div className="p-6 space-y-2">
             <p className="body-medium font-semibold text-[var(--text-primary)]">
-              Building bridges between Gatineau and Ottawa.
+              {isEn
+                ? "Building bridges between Gatineau and Ottawa."
+                : "Tisser des liens entre Gatineau et Ottawa."}
             </p>
             <p>
-              GOSEC creates safe, welcoming spaces where youth, families, and
-              newcomers can connect, belong, and grow together.
+              {isEn
+                ? "GOSEC creates safe, welcoming spaces where youth, families, and newcomers can connect, belong, and grow together."
+                : "GOSEC crée des espaces sécuritaires et accueillants où les jeunes, les familles et les nouveaux arrivants peuvent se rencontrer, s’intégrer et grandir ensemble."}
             </p>
           </div>
         </div>
