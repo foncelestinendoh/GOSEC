@@ -20,17 +20,17 @@ export const AboutSection = () => {
     <section id="about" className="pt-[96px] pb-[72px] bg-white">
       <div className="container max-w-[800px] mx-auto px-4 flex flex-col items-center gap-10">
         <div data-aos="fade-up" className="space-y-8 text-center">
-          <h2 className="heading-1">{heading}</h2>
-          <p className="body-large max-w-2xl mx-auto">
+          <h2 className="heading-1 text-black">{heading}</h2>
+          <p className="body-large max-w-2xl mx-auto text-black/80">
             {intro}
           </p>
-          <div className="space-y-6 body-medium">
+          <div className="space-y-6 body-medium text-black/80">
             <div>
-              <h3 className="heading-3 mb-2">{isEn ? "Mission" : "Mission"}</h3>
+              <h3 className="heading-3 mb-2 text-black">{isEn ? "Mission" : "Mission"}</h3>
               <p className="max-w-2xl mx-auto">{mission}</p>
             </div>
             <div>
-              <h3 className="heading-3 mb-2">{isEn ? "Vision" : "Vision"}</h3>
+              <h3 className="heading-3 mb-2 text-black">{isEn ? "Vision" : "Vision"}</h3>
               <p className="max-w-2xl mx-auto">{vision}</p>
             </div>
           </div>

@@ -5,10 +5,10 @@ export const SiteFooter = () => {
     <footer className="border-t border-[var(--border-light)] bg-[#F7F7F7] mt-16">
       <div className="container max-w-[1200px] mx-auto px-4 py-12 flex flex-col lg:flex-row items-start lg:items-start justify-between gap-10 body-small text-[var(--text-light)]">
         <div className="space-y-3 max-w-md">
-          <div className="font-semibold text-[var(--text-primary)] mb-1">
+          <div className="font-semibold text-black mb-1">
             GOSEC – Gatineau Ottawa Social Elite Club
           </div>
-          <div>
+          <div className="text-black/80">
             Building healthy, inclusive, and connected communities.
             <span className="block">
               Construire des communautés inclusives et en santé.
