@@ -33,40 +33,40 @@ export const ProgramsSection = () => {
               className="network-card border-0 p-0 overflow-hidden hover-lift"
             >
               <Link to={`/programs/${cat.id}`} className="block h-full">
-                <div className="h-52 w-full overflow-hidden">
+                <div className="py-4 flex justify-center">
                   {cat.id === "soccer" && (
                     <img
                       src="https://images.pexels.com/photos/4933853/pexels-photo-4933853.jpeg?w=900&auto=compress&cs=tinysrgb"
                       alt="Children playing soccer together on a field"
-                      className="h-full w-full object-cover"
+                      className="w-28 h-28 object-cover rounded-2xl"
                     />
                   )}
                   {cat.id === "family" && (
                     <img
                       src="https://images.unsplash.com/photo-1758612897496-e4db98c26ad3?auto=format&fit=crop&w=900&q=80"
                       alt="Family with a soccer ball enjoying time together"
-                      className="h-full w-full object-cover"
+                      className="w-28 h-28 object-cover rounded-2xl"
                     />
                   )}
                   {cat.id === "careers" && (
                     <img
                       src="https://images.pexels.com/photos/264337/pexels-photo-264337.jpeg?w=900&auto=compress&cs=tinysrgb"
                       alt="Coach giving advice to a young player on the field"
-                      className="h-full w-full object-cover"
+                      className="w-28 h-28 object-cover rounded-2xl"
                     />
                   )}
                   {cat.id === "youth" && (
                     <img
                       src="https://images.unsplash.com/photo-1622659097509-4d56de14539e?auto=format&fit=crop&w=900&q=80"
                       alt="Youth soccer players celebrating together"
-                      className="h-full w-full object-cover"
+                      className="w-28 h-28 object-cover rounded-2xl"
                     />
                   )}
                   {cat.id === "culture" && (
                     <img
                       src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
                       alt="Community members gathered at a cultural event"
-                      className="h-full w-full object-cover"
+                      className="w-28 h-28 object-cover rounded-2xl"
                     />
                   )}
                 </div>
