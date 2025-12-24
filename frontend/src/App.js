@@ -66,10 +66,10 @@ const Home = () => {
         onOpenChange={setOpenJoin}
         onSubmitted={() => handleFormSubmitted("join")}
       />
-      <BecomeMemberDialog
-        open={openMember}
-        onOpenChange={setOpenMember}
-        onSubmitted={() => handleFormSubmitted("member")}
+      <DonateDialog
+        open={openDonate}
+        onOpenChange={setOpenDonate}
+        onSubmitted={() => handleFormSubmitted("donate")}
       />
       <ContactDialog
         open={openContact}
