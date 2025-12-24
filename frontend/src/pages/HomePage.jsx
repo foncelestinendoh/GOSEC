@@ -5,6 +5,7 @@ export const HomePage = ({ onOpenJoin, onOpenMember }) => {
   return (
     <>
       <HeroSection onOpenJoin={onOpenJoin} onOpenMember={onOpenMember} />
+      <HomeHeroImageStrip />
     </>
   );
 };
