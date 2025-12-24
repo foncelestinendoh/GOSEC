@@ -363,10 +363,6 @@ code {
     }
   }
 
-        @apply bg-background text-foreground;
-    }
-}
-
 @layer base {
     [data-debug-wrapper="true"] {
         display: contents !important;
