@@ -39,30 +39,6 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
             </Button>
           </div>
         </div>
-
-        <div
-          data-aos="zoom-in"
-          className="hidden md:flex justify-end"
-        >
-          <div className="network-card max-w-sm p-0 overflow-hidden">
-            <div className="h-64 w-full overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1604651684573-05470013b3b9?auto=format&fit=crop&w=800&q=80"
-                alt="Youth and families playing community soccer together"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="p-6 space-y-2">
-              <div className="network-card-title mb-1">
-                Soccer. Community. Inclusion.
-              </div>
-              <p className="body-small">
-                Youth, families, and newcomers connecting through sport across
-                Gatineau and Ottawa.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
