@@ -10,8 +10,8 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
       id="hero"
       className="relative pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px]"
     >
-      <div className="container max-w-[1200px] mx-auto px-4 grid gap-10 md:grid-cols-[1.2fr_minmax(0,1fr)] items-center">
-        <div data-aos="fade-up" className="hero-panel space-y-6">
+      <div className="container max-w-[1100px] mx-auto px-4 flex items-center justify-start">
+        <div data-aos="fade-up" className="hero-panel space-y-6 max-w-2xl">
           <p className="uppercase tracking-[0.12em] text-xs text-[var(--text-secondary)]">
             GOSEC – Gatineau Ottawa Social Elite Club
           </p>
