@@ -12,8 +12,16 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
   return (
     <section
       id="hero"
-      className="relative pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px]"
+      className="relative overflow-hidden pt-[110px] pb-[80px] md:pt-[130px] md:pb-[90px]"
     >
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="https://images.unsplash.com/photo-1604651684573-05470013b3b9?auto=format&fit=crop&w=1600&q=80"
+          alt="Community members playing soccer together in a park"
+          className="h-full w-full object-cover opacity-35"
+        />
+        <div className="absolute inset-0 bg-[rgba(250,255,238,0.9)]" />
+      </div>
       <div className="container max-w-[1100px] mx-auto px-4 flex items-center justify-start">
         <div data-aos="fade-up" className="hero-panel space-y-5 max-w-2xl">
           <p className="uppercase tracking-[0.12em] text-xs text-[var(--text-secondary)]">
