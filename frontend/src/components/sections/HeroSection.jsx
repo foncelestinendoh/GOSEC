@@ -28,8 +28,8 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
         />
         <div className="absolute inset-0 bg-[rgba(211,255,98,0.35)]" />
       </div>
-      <div className="container max-w-[1100px] mx-auto px-4 flex items-center justify-start">
-        <div data-aos="fade-up" className="hero-panel space-y-5 max-w-2xl">
+      <div className="container max-w-[1100px] mx-auto px-4 flex items-center justify-center">
+        <div data-aos="fade-up" className="hero-panel space-y-5 max-w-2xl mx-auto text-center">
           <p className="uppercase tracking-[0.12em] text-xs text-[var(--text-secondary)]">
             {heroLabel}
           </p>
