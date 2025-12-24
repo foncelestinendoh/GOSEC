@@ -44,14 +44,14 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
               className="btn-cta button-text"
               onClick={onOpenJoin}
             >
-              Join Our Programs / Rejoindre un programme
+              {joinLabel}
             </Button>
             <Button
               variant="outline"
               className="btn-secondary button-text border-0"
               onClick={onOpenMember}
             >
-              Become a Member / Devenir membre
+              {memberLabel}
             </Button>
           </div>
         </div>
