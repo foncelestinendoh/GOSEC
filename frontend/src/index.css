@@ -196,19 +196,20 @@ code {
   .nav-wrapper {
     max-width: 1440px;
     margin: 0 auto;
-    background: var(--brand-dark);
+    background: #FFFFFF;
     border-radius: 25px;
     padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0, 69, 52, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 69, 52, 0.12);
+    border: 1px solid var(--border-light);
   }
 
   .network-logo {
     font-size: 18px;
     font-weight: 600;
-    color: white;
+    color: var(--brand-dark);
     text-decoration: none;
   }
 
@@ -219,7 +220,7 @@ code {
   }
 
   .network-nav-link {
-    color: white;
+    color: var(--brand-dark);
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
@@ -229,7 +230,7 @@ code {
   }
 
   .network-nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #F7F7F7;
   }
 
   .network-card {

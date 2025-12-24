@@ -5,7 +5,7 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-[64px] bg-[var(--bg-subtle)]/60 border-t border-[var(--border-light)]"
+      className="py-[64px] bg-[#F7F7F7] border-t border-[var(--border-light)]"
     >
       <div className="container max-w-[900px] mx-auto px-4 grid gap-10 md:grid-cols-[1.3fr_minmax(0,1fr)] items-start">
         <div data-aos="fade-up" className="space-y-4">

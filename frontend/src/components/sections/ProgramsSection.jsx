@@ -6,7 +6,7 @@ export const ProgramsSection = () => {
   const { categories } = sections.programs;
 
   return (
-    <section id="programs" className="py-[64px] bg-[var(--bg-subtle)]/60">
+    <section id="programs" className="py-[64px] bg-white">
       <div className="container max-w-[1200px] mx-auto px-4 space-y-10">
         <div className="max-w-2xl" data-aos="fade-up">
           <h2 className="heading-1 mb-3">Programs & Services</h2>

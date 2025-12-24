@@ -45,7 +45,7 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick, onNavig
           </Button>
           <Button
             variant="outline"
-            className="btn-small btn-secondary bg-transparent border border-[var(--brand-primary)] text-white"
+            className="btn-small btn-secondary"
             onClick={onMemberClick}
           >
             Member / Membre
