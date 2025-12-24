@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const imageMap = {
   soccer:
-    "https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?w=1200&auto=compress&cs=tinysrgb",
+    "https://images.pexels.com/photos/13318212/pexels-photo-13318212.jpeg?w=1200&auto=compress&cs=tinysrgb",
   youth:
     "https://images.pexels.com/photos/7551739/pexels-photo-7551739.jpeg?w=1200&auto=compress&cs=tinysrgb",
   family:
