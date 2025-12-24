@@ -14,7 +14,7 @@ const imageMap = {
   culture:
     "https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=1200&q=80",
   careers:
-    "https://images.pexels.com/photos/264337/pexels-photo-264337.jpeg?w=1200&auto=compress&cs=tinysrgb",
+    "https://images.pexels.com/photos/1181400/pexels-photo-1181400.jpeg?w=1200&auto=compress&cs=tinysrgb",
 };
 
 export const ProgramDetailPage = () => {
