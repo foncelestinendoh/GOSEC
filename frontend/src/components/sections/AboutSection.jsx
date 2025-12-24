@@ -39,7 +39,7 @@ export const AboutSection = () => {
                   src="https://images.pexels.com/photos/9553914/pexels-photo-9553914.jpeg?w=900&auto=compress&cs=tinysrgb"
                   alt={
                     isEn
-                      ? "Afro-descendant youth looking toward a bright horizon, symbolizing future vision"
+                      ? "Afro-descendant youth in a creative studio with light trails, symbolizing an innovative future vision"
                       : "Jeunes afro-descendants regardant vers l’horizon, symbolisant une vision d’avenir"
                   }
                   className="h-full w-full object-cover"
