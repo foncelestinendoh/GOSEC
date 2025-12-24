@@ -15,7 +15,7 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
       className="relative pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px]"
     >
       <div className="container max-w-[1100px] mx-auto px-4 flex items-center justify-start">
-        <div data-aos="fade-up" className="hero-panel space-y-6 max-w-2xl">
+        <div data-aos="fade-up" className="hero-panel space-y-5 max-w-2xl">
           <p className="uppercase tracking-[0.12em] text-xs text-[var(--text-secondary)]">
             GOSEC – Gatineau Ottawa Social Elite Club
           </p>
