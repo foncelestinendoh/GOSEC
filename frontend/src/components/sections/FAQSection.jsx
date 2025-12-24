@@ -12,8 +12,8 @@ export const FAQSection = () => {
     <section id="faqs" className="py-[72px] bg-[var(--bg-page)]">
       <div className="container max-w-[900px] mx-auto px-4 space-y-8">
         <div className="max-w-2xl" data-aos="fade-up">
-          <h2 className="heading-2 mt-8 mb-3">Common Questions</h2>
-          <p className="body-medium">
+          <h2 className="heading-2 mt-8 mb-3 text-black">Common Questions</h2>
+          <p className="body-medium text-black/80">
             Learn more about who GOSEC serves, how to join, and where activities
             take place.
             <span className="block mt-1">
