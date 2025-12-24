@@ -64,7 +64,9 @@ export const ProgramDetailPage = () => {
             {program.bulletsEn && (
               <div className="grid md:grid-cols-2 gap-4 body-medium">
                 <div>
-                  <h3 className="heading-3 mb-2">What you’ll find</h3>
+                  <h3 className="heading-3 mb-2">
+                    {isEn ? "What you'll find" : "Ce que vous trouverez"}
+                  </h3>
                   <ul className="list-disc pl-5 space-y-1">
                     {program.bulletsEn.map((item, idx) => (
                       <li key={idx}>{item}</li>
