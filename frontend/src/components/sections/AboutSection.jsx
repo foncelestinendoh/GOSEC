@@ -41,8 +41,8 @@ export const AboutSection = () => {
         >
           <div className="h-60 w-full overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
-              alt="Community members connecting at an outdoor event"
+              src="https://images.pexels.com/photos/3969106/pexels-photo-3969106.jpeg?w=900&auto=compress&cs=tinysrgb"
+              alt="Black families and youth connecting at a community event"
               className="h-full w-full object-cover"
             />
           </div>

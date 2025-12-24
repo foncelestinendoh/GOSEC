@@ -53,15 +53,15 @@ export const ProgramsSection = () => {
                   <div className="flex justify-center md:justify-end flex-shrink-0">
                     {cat.id === "soccer" && (
                       <img
-                        src="https://images.pexels.com/photos/4933853/pexels-photo-4933853.jpeg?w=900&auto=compress&cs=tinysrgb"
-                        alt="Children playing soccer together on a field"
+                        src="https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Black children playing soccer together on a field"
                         className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
                       />
                     )}
                     {cat.id === "family" && (
                       <img
-                        src="https://images.unsplash.com/photo-1758612897496-e4db98c26ad3?auto=format&fit=crop&w=900&q=80"
-                        alt="Family with a soccer ball enjoying time together"
+                        src="https://images.pexels.com/photos/4259140/pexels-photo-4259140.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Black family spending time together outdoors with a ball"
                         className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
                       />
                     )}

@@ -9,8 +9,8 @@ export const HomeHeroImageStrip = () => {
           data-aos="zoom-in"
         >
           <img
-            src="https://images.pexels.com/photos/1181400/pexels-photo-1181400.jpeg?w=1400&auto=compress&cs=tinysrgb"
-            alt="Students and community members at a job fair and training event"
+            src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?w=1400&auto=compress&cs=tinysrgb"
+            alt="Black students and professionals networking at a job fair"
             className="w-full h-[260px] md:h-[340px] object-cover"
           />
         </div>

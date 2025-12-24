@@ -22,8 +22,8 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
     >
       <div className="absolute inset-0 -z-10">
         <img
-          src="https://images.pexels.com/photos/3228769/pexels-photo-3228769.jpeg?w=1800&auto=compress&cs=tinysrgb"
-          alt="Vibrant community scene with people and colorful lights"
+          src="https://images.pexels.com/photos/7562253/pexels-photo-7562253.jpeg?w=1800&auto=compress&cs=tinysrgb"
+          alt="Black children and youth smiling together in a vibrant community setting"
           className="h-full w-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-[rgba(255,255,255,0.78)]" />
