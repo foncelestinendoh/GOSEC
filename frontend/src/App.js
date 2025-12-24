@@ -49,6 +49,7 @@ const Home = () => {
           onOpenJoin={() => setOpenJoin(true)}
           onOpenMember={() => setOpenMember(true)}
         />
+        <AboutSection />
         <ProgramsSection />
         <FAQSection />
         <ContactSection />
