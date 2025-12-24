@@ -39,6 +39,11 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
           <p className="body-medium max-w-xl">
             {subtitle}
           </p>
+          <p className="body-small max-w-xl text-[var(--text-secondary)]">
+            {isEn
+              ? "Using soccer, culture, and education to support youth, families, and newcomers across Gatineau and Ottawa."
+              : "Utiliser le soccer, la culture et l’éducation pour soutenir les jeunes, les familles et les nouveaux arrivants à Gatineau et Ottawa."}
+          </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Button
               className="btn-cta button-text"
