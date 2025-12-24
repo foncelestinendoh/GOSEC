@@ -40,7 +40,7 @@ export const AboutSection = () => {
                   alt={
                     isEn
                       ? "Afro-descendant youth in a creative studio with light trails, symbolizing an innovative future vision"
-                      : "Jeunes afro-descendants regardant vers l’horizon, symbolisant une vision d’avenir"
+                      : "Jeunes afro-descendants dans un studio créatif avec des jeux de lumière, symbolisant une vision d'avenir innovante"
                   }
                   className="h-full w-full object-cover"
                 />
