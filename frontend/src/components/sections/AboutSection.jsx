@@ -48,6 +48,10 @@ export const AboutSection = () => {
             </div>
           </div>
         </div>
+        <div
+          data-aos="zoom-in"
+          className="network-card body-small space-y-4 p-0 overflow-hidden max-w-xl"
+        >
           <div className="h-60 w-full overflow-hidden">
             <img
               src="https://images.pexels.com/photos/18414880/pexels-photo-18414880.jpeg?w=900&auto=compress&cs=tinysrgb"
