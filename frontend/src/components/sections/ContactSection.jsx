@@ -55,8 +55,8 @@ export const ContactSection = () => {
         >
           <div className="h-56 w-full overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1604651684573-05470013b3b9?auto=format&fit=crop&w=900&q=80"
-              alt="Children running together on a soccer field"
+              src="https://images.pexels.com/photos/3671579/pexels-photo-3671579.jpeg?w=900&auto=compress&cs=tinysrgb"
+              alt="Black children running together on a soccer field"
               className="h-full w-full object-cover"
             />
           </div>

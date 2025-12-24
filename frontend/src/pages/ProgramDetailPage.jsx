@@ -6,15 +6,15 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const imageMap = {
   soccer:
-    "https://images.pexels.com/photos/4933853/pexels-photo-4933853.jpeg?w=1200&auto=compress&cs=tinysrgb",
+    "https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?w=1200&auto=compress&cs=tinysrgb",
   youth:
-    "https://images.unsplash.com/photo-1622659097509-4d56de14539e?auto=format&fit=crop&w=1200&q=80",
+    "https://images.pexels.com/photos/7551739/pexels-photo-7551739.jpeg?w=1200&auto=compress&cs=tinysrgb",
   family:
-    "https://images.unsplash.com/photo-1758612897496-e4db98c26ad3?auto=format&fit=crop&w=1200&q=80",
+    "https://images.pexels.com/photos/4259140/pexels-photo-4259140.jpeg?w=1200&auto=compress&cs=tinysrgb",
   culture:
-    "https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=1200&q=80",
+    "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?w=1200&auto=compress&cs=tinysrgb",
   careers:
-    "https://images.pexels.com/photos/1181400/pexels-photo-1181400.jpeg?w=1200&auto=compress&cs=tinysrgb",
+    "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?w=1200&auto=compress&cs=tinysrgb",
 };
 
 export const ProgramDetailPage = () => {

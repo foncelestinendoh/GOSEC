@@ -74,15 +74,15 @@ export const ProgramsSection = () => {
                     )}
                     {cat.id === "youth" && (
                       <img
-                        src="https://images.unsplash.com/photo-1622659097509-4d56de14539e?auto=format&fit=crop&w=900&q=80"
-                        alt="Youth soccer players celebrating together"
+                        src="https://images.pexels.com/photos/7551739/pexels-photo-7551739.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Black youth celebrating together on a sports field"
                         className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
                       />
                     )}
                     {cat.id === "culture" && (
                       <img
-                        src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
-                        alt="Community members gathered at a cultural event"
+                        src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Black community members gathered at a cultural celebration"
                         className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
                       />
                     )}
