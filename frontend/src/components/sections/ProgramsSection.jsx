@@ -13,14 +13,13 @@ export const ProgramsSection = () => {
     <section id="programs" className="py-[72px] bg-[#F7F7F7]">
       <div className="container max-w-[1200px] mx-auto px-4 space-y-10">
         <div className="max-w-2xl" data-aos="fade-up">
-          <h2 className="heading-1 mb-3">Programs & Services</h2>
+          <h2 className="heading-1 mb-3">
+            {isEn ? "Programs & Services" : "Programmes et services"}
+          </h2>
           <p className="body-large">
-            Explore GOSEC programs focused on youth, families, cultural
-            integration, and professional growth.
-            <span className="block mt-1">
-              Découvrez les programmes de GOSEC pour les jeunes, les familles,
-              l’intégration culturelle et le développement professionnel.
-            </span>
+            {isEn
+              ? "Explore GOSEC programs focused on youth, families, cultural integration, and professional growth."
+              : "Découvrez les programmes de GOSEC pour les jeunes, les familles, l’intégration culturelle et le développement professionnel."}
           </p>
         </div>
         <div
