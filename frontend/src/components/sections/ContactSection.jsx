@@ -5,9 +5,9 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-[64px] bg-[#F7F7F7] border-t border-[var(--border-light)]"
+      className="py-[72px] bg-[#F7F7F7] border-t border-[var(--border-light)]"
     >
-      <div className="container max-w-[900px] mx-auto px-4 grid gap-10 md:grid-cols-[1.3fr_minmax(0,1fr)] items-start">
+      <div className="container max-w-[1100px] mx-auto px-4 grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
         <div data-aos="fade-up" className="space-y-4">
           <h2 className="heading-1">Contact & Support</h2>
           <p className="body-large max-w-xl">
@@ -31,16 +31,25 @@ export const ContactSection = () => {
         </div>
         <div
           data-aos="zoom-in"
-          className="network-card space-y-2 body-small"
+          className="network-card space-y-3 body-small p-0 overflow-hidden"
         >
-          <p>
-            Stay updated on tournaments, community events, workshops, and family
-            activities.
-          </p>
-          <p>
-            Restez informés de nos tournois, événements communautaires, ateliers et
-            activités familiales.
-          </p>
+          <div className="h-56 w-full overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1604651684573-05470013b3b9?auto=format&fit=crop&w=900&q=80"
+              alt="Children running together on a soccer field"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="p-6 space-y-2">
+            <p>
+              Stay updated on tournaments, community events, workshops, and family
+              activities.
+            </p>
+            <p>
+              Restez informés de nos tournois, événements communautaires, ateliers
+              et activités familiales.
+            </p>
+          </div>
         </div>
       </div>
     </section>

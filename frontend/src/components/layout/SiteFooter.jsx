@@ -2,9 +2,9 @@ import React from "react";
 
 export const SiteFooter = () => {
   return (
-    <footer className="border-t border-[var(--border-light)] bg-[#F7F7F7] mt-12">
-      <div className="container max-w-[1200px] mx-auto px-4 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 body-small text-[var(--text-light)]">
-        <div>
+    <footer className="border-t border-[var(--border-light)] bg-[#F7F7F7] mt-16">
+      <div className="container max-w-[1200px] mx-auto px-4 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 body-small text-[var(--text-light)]">
+        <div className="space-y-2 max-w-md">
           <div className="font-semibold text-[var(--text-primary)] mb-1">
             GOSEC – Gatineau Ottawa Social Elite Club
           </div>
@@ -15,7 +15,8 @@ export const SiteFooter = () => {
             </span>
           </div>
         </div>
-        <div className="text-xs text-right">
+        <div className="space-y-1 text-xs md:text-right">
+          <div>Based in Gatineau and Ottawa / Basé à Gatineau et Ottawa</div>
           <div>© GOSEC – Tous droits réservés</div>
         </div>
       </div>

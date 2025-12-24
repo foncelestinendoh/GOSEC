@@ -2,9 +2,9 @@ import React from "react";
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-[64px] bg-white">
-      <div className="container max-w-[1200px] mx-auto px-4 grid gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-start">
-        <div data-aos="fade-up" className="space-y-5">
+    <section id="about" className="py-[72px] bg-white">
+      <div className="container max-w-[1200px] mx-auto px-4 grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-start">
+        <div data-aos="fade-up" className="space-y-6">
           <h2 className="heading-1">About GOSEC / À propos de GOSEC</h2>
           <p className="body-large">
             GOSEC is a non-profit community club that uses soccer, culture, and
@@ -43,16 +43,24 @@ export const AboutSection = () => {
         </div>
         <div
           data-aos="zoom-in"
-          className="network-card body-small space-y-3"
+          className="network-card body-small space-y-4 p-0 overflow-hidden"
         >
-          <p>
-            GOSEC connects families, youth, and newcomers through sport,
-            mentorship, and community action.
-          </p>
-          <p>
-            GOSEC relie les familles, les jeunes et les nouveaux arrivants par le
-            sport, le mentorat et l’action communautaire.
-          </p>
+          <div className="h-60 w-full overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
+              alt="Community members connecting at an outdoor event"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="p-6 space-y-2">
+            <p className="body-medium font-semibold text-[var(--text-primary)]">
+              Building bridges between Gatineau and Ottawa.
+            </p>
+            <p>
+              GOSEC creates safe, welcoming spaces where youth, families, and
+              newcomers can connect, belong, and grow together.
+            </p>
+          </div>
         </div>
       </div>
     </section>

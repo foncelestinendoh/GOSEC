@@ -9,7 +9,7 @@ import { sections } from "@/mock/gosecMock";
 
 export const FAQSection = () => {
   return (
-    <section id="faqs" className="py-[64px] bg-[var(--bg-page)]">
+    <section id="faqs" className="py-[72px] bg-[var(--bg-page)]">
       <div className="container max-w-[900px] mx-auto px-4 space-y-8">
         <div className="max-w-2xl" data-aos="fade-up">
           <h2 className="heading-2 mb-3">Common Questions</h2>
@@ -25,7 +25,11 @@ export const FAQSection = () => {
         <div data-aos="fade-up" data-aos-delay="150">
           <Accordion type="single" collapsible className="w-full">
             {sections.faqs.map((faq) => (
-              <AccordionItem key={faq.id} value={faq.id} className="border-b border-[var(--border-light)]">
+              <AccordionItem
+                key={faq.id}
+                value={faq.id}
+                className="border-b border-[var(--border-light)] bg-white/80"
+              >
                 <AccordionTrigger className="body-medium text-left">
                   <div>
                     <div>{faq.questionEn}</div>
