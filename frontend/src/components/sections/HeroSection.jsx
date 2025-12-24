@@ -19,13 +19,11 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
           <p className="uppercase tracking-[0.12em] text-xs text-[var(--text-secondary)]">
             GOSEC – Gatineau Ottawa Social Elite Club
           </p>
-          <h1 className="display-large">
-            {titleEn}
-            <span className="block mt-2">{titleFr}</span>
+          <h1 className="heading-1">
+            {title}
           </h1>
-          <p className="body-large max-w-xl">
-            {subtitleEn}
-            <span className="block mt-2">{subtitleFr}</span>
+          <p className="body-medium max-w-xl">
+            {subtitle}
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Button
