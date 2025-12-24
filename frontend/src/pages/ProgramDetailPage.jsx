@@ -19,6 +19,8 @@ const imageMap = {
 
 export const ProgramDetailPage = () => {
   const { programId } = useParams();
+  const { language } = useLanguage();
+  const isEn = language === "en";
   const program = sections.programs.categories.find((c) => c.id === programId);
 
   if (!program) {
