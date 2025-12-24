@@ -35,7 +35,7 @@ const Home = () => {
     <GosecLayout>
       <SiteHeader
         onJoinClick={() => setOpenJoin(true)}
-        onMemberClick={() => setOpenMember(true)}
+        onMemberClick={() => setOpenDonate(true)}
         onContactClick={() => setOpenContact(true)}
       />
       <main>
