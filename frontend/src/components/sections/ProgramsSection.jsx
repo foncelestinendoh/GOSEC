@@ -34,44 +34,7 @@ export const ProgramsSection = () => {
             >
               <Link to={`/programs/${cat.id}`} className="block h-full">
                 <div className="flex flex-col md:flex-row items-center gap-6 p-6">
-                  <div className="flex justify-center md:justify-start flex-shrink-0">
-                    {cat.id === "soccer" && (
-                      <img
-                        src="https://images.pexels.com/photos/4933853/pexels-photo-4933853.jpeg?w=900&auto=compress&cs=tinysrgb"
-                        alt="Children playing soccer together on a field"
-                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
-                      />
-                    )}
-                    {cat.id === "family" && (
-                      <img
-                        src="https://images.unsplash.com/photo-1758612897496-e4db98c26ad3?auto=format&fit=crop&w=900&q=80"
-                        alt="Family with a soccer ball enjoying time together"
-                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
-                      />
-                    )}
-                    {cat.id === "careers" && (
-                      <img
-                        src="https://images.pexels.com/photos/264337/pexels-photo-264337.jpeg?w=900&auto=compress&cs=tinysrgb"
-                        alt="Coach giving advice to a young player on the field"
-                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
-                      />
-                    )}
-                    {cat.id === "youth" && (
-                      <img
-                        src="https://images.unsplash.com/photo-1622659097509-4d56de14539e?auto=format&fit=crop&w=900&q=80"
-                        alt="Youth soccer players celebrating together"
-                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
-                      />
-                    )}
-                    {cat.id === "culture" && (
-                      <img
-                        src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
-                        alt="Community members gathered at a cultural event"
-                        className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-cover rounded-2xl"
-                      />
-                    )}
-                  </div>
-                  <div className="flex-1">
+                  <div className="flex-1 text-left">
                     <CardHeader className="p-0 mb-3">
                       <CardTitle className="network-card-title">
                         {cat.titleEn}
@@ -86,6 +49,43 @@ export const ProgramsSection = () => {
                         </span>
                       </p>
                     </CardContent>
+                  </div>
+                  <div className="flex justify-center md:justify-end flex-shrink-0">
+                    {cat.id === "soccer" && (
+                      <img
+                        src="https://images.pexels.com/photos/4933853/pexels-photo-4933853.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Children playing soccer together on a field"
+                        className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
+                      />
+                    )}
+                    {cat.id === "family" && (
+                      <img
+                        src="https://images.unsplash.com/photo-1758612897496-e4db98c26ad3?auto=format&fit=crop&w=900&q=80"
+                        alt="Family with a soccer ball enjoying time together"
+                        className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
+                      />
+                    )}
+                    {cat.id === "careers" && (
+                      <img
+                        src="https://images.pexels.com/photos/264337/pexels-photo-264337.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Coach giving advice to a young player on the field"
+                        className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
+                      />
+                    )}
+                    {cat.id === "youth" && (
+                      <img
+                        src="https://images.unsplash.com/photo-1622659097509-4d56de14539e?auto=format&fit=crop&w=900&q=80"
+                        alt="Youth soccer players celebrating together"
+                        className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
+                      />
+                    )}
+                    {cat.id === "culture" && (
+                      <img
+                        src="https://images.unsplash.com/photo-1565813086292-604790c8a97b?auto=format&fit=crop&w=900&q=80"
+                        alt="Community members gathered at a cultural event"
+                        className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
+                      />
+                    )}
                   </div>
                 </div>
               </Link>
