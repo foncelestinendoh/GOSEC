@@ -1,43 +1,34 @@
-import React, { useEffect } from "react";
-import SmoothScroll from "smooth-scroll";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-let scrollInstance;
+export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
+  const location = useLocation();
 
-export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick, onNavigate }) => {
-  useEffect(() => {
-    if (!scrollInstance) {
-      scrollInstance = new SmoothScroll('a[href*="#"]', {
-        speed: 800,
-        speedAsDuration: true,
-      });
-    }
-  }, []);
+  const isActive = (path) => location.pathname === path;
 
-  const handleNavClick = (id, evt) => {
-    evt.preventDefault();
-    onNavigate?.(id);
-  };
+  const navLinkClass = (path) =>
+    `network-nav-link ${isActive(path) ? "font-semibold" : ""}`;
 
   return (
     <header className="network-header">
       <div className="nav-wrapper">
-        <a href="#hero" className="network-logo" onClick={(e) => handleNavClick("hero", e)}>
+        <Link to="/" className="network-logo">
           GOSEC
-        </a>
+        </Link>
         <nav className="network-nav">
-          <a href="#about" className="network-nav-link" onClick={(e) => handleNavClick("about", e)}>
+          <Link to="/about" className={navLinkClass("/about")}>
             About / À propos
-          </a>
-          <a href="#programs" className="network-nav-link" onClick={(e) => handleNavClick("programs", e)}>
+          </Link>
+          <Link to="/programs" className={navLinkClass("/programs")}>
             Programs / Programmes
-          </a>
-          <a href="#faqs" className="network-nav-link" onClick={(e) => handleNavClick("faqs", e)}>
+          </Link>
+          <Link to="/faqs" className={navLinkClass("/faqs")}>
             FAQs
-          </a>
-          <a href="#contact" className="network-nav-link" onClick={(e) => handleNavClick("contact", e)}>
+          </Link>
+          <Link to="/contact" className={navLinkClass("/contact")}>
             Contact
-          </a>
+          </Link>
         </nav>
         <div className="hidden md:flex items-center gap-2">
           <Button className="btn-small btn-primary" onClick={onJoinClick}>
