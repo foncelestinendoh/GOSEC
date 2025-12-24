@@ -53,8 +53,8 @@ export const ProgramsSection = () => {
                   <div className="flex justify-center md:justify-end flex-shrink-0">
                     {cat.id === "soccer" && (
                       <img
-                        src="https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?w=900&auto=compress&cs=tinysrgb"
-                        alt="Black children playing soccer together on a field"
+                        src="https://images.pexels.com/photos/13318212/pexels-photo-13318212.jpeg?w=900&auto=compress&cs=tinysrgb"
+                        alt="Black youth soccer players wearing GOSEC-style jerseys in a team huddle"
                         className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-2xl"
                       />
                     )}
