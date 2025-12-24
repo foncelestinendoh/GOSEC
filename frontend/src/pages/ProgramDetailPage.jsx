@@ -56,12 +56,10 @@ export const ProgramDetailPage = () => {
           )}
           <div className="p-6 md:p-8 space-y-4">
             <h1 className="heading-1">
-              {program.titleEn}
-              <span className="block mt-1">{program.titleFr}</span>
+              {isEn ? program.titleEn : program.titleFr}
             </h1>
             <p className="body-large">
-              {program.descriptionEn}
-              <span className="block mt-1">{program.descriptionFr}</span>
+              {isEn ? program.descriptionEn : program.descriptionFr}
             </p>
             {program.bulletsEn && (
               <div className="grid md:grid-cols-2 gap-4 body-medium">
