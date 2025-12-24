@@ -75,13 +75,9 @@ export const ProgramDetailPage = () => {
                 </div>
                 <div className="body-small space-y-2">
                   <p>
-                    GOSEC programs focus on confidence, leadership, teamwork, and
-                    community belonging through sport and social connection.
-                  </p>
-                  <p>
-                    Les programmes de GOSEC misent sur la confiance, le leadership,
-                    l’esprit d’équipe et le sentiment d’appartenance communautaire
-                    par le sport et la participation sociale.
+                    {isEn
+                      ? "GOSEC programs focus on confidence, leadership, teamwork, and community belonging through sport and social connection."
+                      : "Les programmes de GOSEC misent sur la confiance, le leadership, l'esprit d'équipe et le sentiment d'appartenance communautaire par le sport et la participation sociale."}
                   </p>
                 </div>
               </div>
