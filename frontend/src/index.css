@@ -178,6 +178,17 @@ code {
   .caption {
     font-size: clamp(0.75rem, 1vw, 0.875rem);
     font-weight: 400;
+  .link-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--brand-dark);
+    text-decoration: none;
+  }
+
+  .link-text:hover {
+    text-decoration: underline;
+  }
+
     line-height: 1.4;
     color: var(--text-light);
   }

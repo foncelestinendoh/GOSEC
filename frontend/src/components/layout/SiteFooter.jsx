@@ -3,8 +3,8 @@ import React from "react";
 export const SiteFooter = () => {
   return (
     <footer className="border-t border-[var(--border-light)] bg-[#F7F7F7] mt-16">
-      <div className="container max-w-[1200px] mx-auto px-4 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 body-small text-[var(--text-light)]">
-        <div className="space-y-2 max-w-md">
+      <div className="container max-w-[1200px] mx-auto px-4 py-12 flex flex-col lg:flex-row items-start lg:items-start justify-between gap-10 body-small text-[var(--text-light)]">
+        <div className="space-y-3 max-w-md">
           <div className="font-semibold text-[var(--text-primary)] mb-1">
             GOSEC – Gatineau Ottawa Social Elite Club
           </div>
@@ -15,10 +15,47 @@ export const SiteFooter = () => {
             </span>
           </div>
         </div>
-        <div className="space-y-1 text-xs md:text-right">
-          <div>Based in Gatineau and Ottawa / Basé à Gatineau et Ottawa</div>
-          <div>Community Fields & Recreation Hub (example)</div>
-          <div>© GOSEC – Tous droits réservés</div>
+        <div className="space-y-3 text-xs md:text-right max-w-md">
+          <div>
+            <div className="font-semibold text-[var(--text-primary)] mb-1">
+              Address / Adresse
+            </div>
+            <p>
+              GOSEC – Gatineau Ottawa Social Elite Club
+              <br />
+              Community Fields & Recreation Hub (example)
+              <br />
+              Gatineau–Ottawa, QC
+            </p>
+          </div>
+          <div>
+            <div className="font-semibold text-[var(--text-primary)] mb-1">
+              Opening hours / Heures d’ouverture
+            </div>
+            <p>
+              Mon–Fri / Lun–Ven: 17:00 – 21:00
+              <br />
+              Sat–Sun / Sam–Dim: Events & tournaments
+            </p>
+          </div>
+          <div>
+            <div className="font-semibold text-[var(--text-primary)] mb-1">
+              Location
+            </div>
+            <p>
+              View on Google Maps / Voir sur Google Maps:
+              <br />
+              <a
+                href="https://www.google.com/maps/place/Gatineau,+QC,+Canada"
+                target="_blank"
+                rel="noreferrer"
+                className="link-text"
+              >
+                Gatineau–Ottawa Community Fields (example)
+              </a>
+            </p>
+          </div>
+          <div className="pt-1">© GOSEC – Tous droits réservés</div>
         </div>
       </div>
     </footer>
