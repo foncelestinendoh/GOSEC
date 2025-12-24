@@ -3,23 +3,16 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster, toast } from "@/components/ui/sonner";
 import GosecLayout from "@/components/GosecLayout";
-import HeroSection from "@/components/sections/HeroSection";
-import AboutSection from "@/components/sections/AboutSection";
-import ProgramsSection from "@/components/sections/ProgramsSection";
-import FAQSection from "@/components/sections/FAQSection";
-import ContactSection from "@/components/sections/ContactSection";
 import { JoinProgramDialog } from "@/components/sections/forms/JoinProgramDialog";
 import { BecomeMemberDialog } from "@/components/sections/forms/BecomeMemberDialog";
 import { ContactDialog } from "@/components/sections/forms/ContactDialog";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-
-const scrollToId = (id) => {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-};
+import HomePage from "@/pages/HomePage";
+import AboutPage from "@/pages/AboutPage";
+import ProgramsPage from "@/pages/ProgramsPage";
+import FAQPage from "@/pages/FAQPage";
+import ContactPage from "@/pages/ContactPage";
 
 const Home = () => {
   const [openJoin, setOpenJoin] = useState(false);
