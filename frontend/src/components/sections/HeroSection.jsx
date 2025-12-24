@@ -18,7 +18,7 @@ export const HeroSection = ({ onOpenJoin, onOpenMember }) => {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden pt-[60px] pb-[80px] md:pt-[70px] md:pb-[90px]"
+      className="relative overflow-hidden pt-[30px] pb-[80px] md:pt-[35px] md:pb-[90px]"
     >
       <div className="absolute inset-0 -z-10">
         <img
