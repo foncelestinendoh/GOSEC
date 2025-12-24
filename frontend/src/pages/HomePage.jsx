@@ -5,8 +5,8 @@ import HomeHeroImageStrip from "@/components/sections/HomeHeroImageStrip";
 export const HomePage = ({ onOpenJoin, onOpenMember }) => {
   return (
     <>
-      <HeroSection onOpenJoin={onOpenJoin} onOpenMember={onOpenMember} />
       <HomeHeroImageStrip />
+      <HeroSection onOpenJoin={onOpenJoin} onOpenMember={onOpenMember} />
     </>
   );
 };
