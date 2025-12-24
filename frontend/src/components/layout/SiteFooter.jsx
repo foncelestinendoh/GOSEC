@@ -17,6 +17,7 @@ export const SiteFooter = () => {
         </div>
         <div className="space-y-1 text-xs md:text-right">
           <div>Based in Gatineau and Ottawa / Basé à Gatineau et Ottawa</div>
+          <div>Community Fields & Recreation Hub (example)</div>
           <div>© GOSEC – Tous droits réservés</div>
         </div>
       </div>

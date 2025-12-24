@@ -28,6 +28,26 @@ export const ContactSection = () => {
               <span>+1 (000) 000-0000</span>
             </div>
           </div>
+          <div className="mt-4 grid gap-4 md:grid-cols-2 body-small">
+            <div>
+              <div className="font-semibold mb-1">Address / Adresse</div>
+              <p>
+                GOSEC – Gatineau Ottawa Social Elite Club
+                <br />
+                Community Fields & Recreation Hub (example)
+                <br />
+                Gatineau–Ottawa, QC
+              </p>
+            </div>
+            <div>
+              <div className="font-semibold mb-1">Opening hours / Heures d’ouverture</div>
+              <p>
+                Mon–Fri / Lun–Ven: 17:00 – 21:00 (training & programs)
+                <br />
+                Sat–Sun / Sam–Dim: Events, tournaments & community days
+              </p>
+            </div>
+          </div>
         </div>
         <div
           data-aos="zoom-in"
