@@ -13,6 +13,8 @@ import AboutPage from "@/pages/AboutPage";
 import ProgramsPage from "@/pages/ProgramsPage";
 import FAQPage from "@/pages/FAQPage";
 import ContactPage from "@/pages/ContactPage";
+import GalleryPage from "@/pages/GalleryPage";
+import EventsPage from "@/pages/EventsPage";
 import ProgramDetailPage from "@/pages/ProgramDetailPage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
@@ -52,6 +54,8 @@ const Home = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/programs" element={<ProgramsPage />} />
           <Route path="/programs/:programId" element={<ProgramDetailPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/events" element={<EventsPage />} />
           <Route path="/faqs" element={<FAQPage />} />
           <Route
             path="/contact"

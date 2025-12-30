@@ -15,6 +15,8 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
   const labels = {
     about: language === "en" ? "About" : "À propos",
     programs: language === "en" ? "Programs" : "Programmes",
+    gallery: language === "en" ? "Gallery" : "Galerie",
+    events: language === "en" ? "Upcoming Events" : "Événements à venir",
     faqs: language === "en" ? "FAQs" : "FAQ",
     contact: language === "en" ? "Contact" : "Contact",
     join: language === "en" ? "Join" : "Rejoindre",
@@ -33,6 +35,12 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
           </Link>
           <Link to="/programs" className={navLinkClass("/programs")}>
             {labels.programs}
+          </Link>
+          <Link to="/gallery" className={navLinkClass("/gallery")}>
+            {labels.gallery}
+          </Link>
+          <Link to="/events" className={navLinkClass("/events")}>
+            {labels.events}
           </Link>
           <Link to="/faqs" className={navLinkClass("/faqs")}>
             {labels.faqs}
