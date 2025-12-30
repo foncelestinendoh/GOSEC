@@ -72,6 +72,76 @@ export const AboutSection = () => {
             </p>
           </div>
         </div>
+
+        <div
+          data-aos="fade-up"
+          className="w-full mt-10 space-y-4"
+        >
+          <h3 className="heading-3 text-black text-center">
+            Leadership & Organigram / Organigramme et direction
+          </h3>
+          <p className="body-medium text-black/80 text-center max-w-2xl mx-auto">
+            Photos and full profiles of the GOSEC leadership team will appear here.
+            <span className="block mt-1 body-small text-black/70">
+              Photos et profils détaillés de l’équipe de direction de GOSEC seront
+              affichés ici.
+            </span>
+          </p>
+          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-5 text-center shadow-sm">
+              <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-black/10" />
+              <div className="font-semibold text-black text-sm">President</div>
+              <div className="body-small text-black/70">Président(e)</div>
+              <div className="body-small mt-1 text-black/60">Photo coming soon</div>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-5 text-center shadow-sm">
+              <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-black/10" />
+              <div className="font-semibold text-black text-sm">Vice-President</div>
+              <div className="body-small text-black/70">Vice-président(e)</div>
+              <div className="body-small mt-1 text-black/60">Photo coming soon</div>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-5 text-center shadow-sm">
+              <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-black/10" />
+              <div className="font-semibold text-black text-sm">Secretary General</div>
+              <div className="body-small text-black/70">Secrétaire général(e)</div>
+              <div className="body-small mt-1 text-black/60">Photo coming soon</div>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-5 text-center shadow-sm">
+              <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-black/10" />
+              <div className="font-semibold text-black text-sm">Treasurer</div>
+              <div className="body-small text-black/70">Trésorier(ère)</div>
+              <div className="body-small mt-1 text-black/60">Photo coming soon</div>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-5 text-center shadow-sm">
+              <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-black/10" />
+              <div className="font-semibold text-black text-sm">Financial Secretary</div>
+              <div className="body-small text-black/70">Secrétaire financier(ère)</div>
+              <div className="body-small mt-1 text-black/60">Photo coming soon</div>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-5 text-center shadow-sm">
+              <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-black/10" />
+              <div className="font-semibold text-black text-sm">
+                Public Relations Officer (PRO)
+              </div>
+              <div className="body-small text-black/70">Responsable des relations publiques</div>
+              <div className="body-small mt-1 text-black/60">Photo coming soon</div>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-5 text-center shadow-sm">
+              <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-black/10" />
+              <div className="font-semibold text-black text-sm">Head Coach / Technical Director</div>
+              <div className="body-small text-black/70">Entraîneur chef / Directeur technique</div>
+              <div className="body-small mt-1 text-black/60">Photo coming soon</div>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-5 text-center shadow-sm">
+              <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-black/10" />
+              <div className="font-semibold text-black text-sm">
+                Volunteers & Community Leaders
+              </div>
+              <div className="body-small text-black/70">Bénévoles et leaders communautaires</div>
+              <div className="body-small mt-1 text-black/60">Photo coming soon</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
