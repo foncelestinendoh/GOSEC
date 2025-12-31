@@ -1,4 +1,5 @@
 import React from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const galleryItems = [
   {
@@ -36,16 +37,20 @@ const galleryItems = [
 ];
 
 export const GalleryPage = () => {
+  const { language } = useLanguage();
+  const isEn = language === "en";
+
   return (
     <section className="py-[72px] bg-white">
       <div className="container max-w-[1100px] mx-auto px-4 space-y-8">
         <div className="max-w-2xl mx-auto text-center" data-aos="fade-up">
-          <h1 className="heading-1 text-black mb-3">Gallery / Galerie</h1>
+          <h1 className="heading-1 text-black mb-3">
+            {isEn ? "Gallery" : "Galerie"}
+          </h1>
           <p className="body-large text-black/80">
-            Moments from GOSEC programs, tournaments, and community events.
-            <span className="block mt-1">
-              Moments forts des programmes, tournois et événements communautaires de GOSEC.
-            </span>
+            {isEn
+              ? "Moments from GOSEC programs, tournaments, and community events."
+              : "Moments forts des programmes, tournois et événements communautaires de GOSEC."}
           </p>
         </div>
         <div
@@ -64,8 +69,9 @@ export const GalleryPage = () => {
                 className="h-60 w-full object-cover"
               />
               <figcaption className="p-4 body-medium text-black/80">
-                <div className="font-semibold text-black">{item.titleEn}</div>
-                <div className="body-small mt-1">{item.titleFr}</div>
+                <div className="font-semibold text-black">
+                  {isEn ? item.titleEn : item.titleFr}
+                </div>
               </figcaption>
             </figure>
           ))}

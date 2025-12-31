@@ -1,7 +1,11 @@
 import React from "react";
 import { Mail, Phone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const ContactSection = () => {
+  const { language } = useLanguage();
+  const isEn = language === "en";
+
   return (
     <section
       id="contact"
@@ -9,14 +13,13 @@ export const ContactSection = () => {
     >
       <div className="container max-w-[1100px] mx-auto px-4 grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
         <div data-aos="fade-up" className="space-y-4">
-          <h2 className="heading-1 mt-8 text-black">Contact & Support</h2>
+          <h2 className="heading-1 mt-8 text-black">
+            {isEn ? "Contact & Support" : "Contact et soutien"}
+          </h2>
           <p className="body-large max-w-xl text-black/80">
-            Our team is here to help you find the right program for you, your
-            family, or your organization.
-            <span className="block mt-1">
-              Notre équipe est là pour vous accompagner et vous orienter vers le
-              bon programme.
-            </span>
+            {isEn
+              ? "Our team is here to help you find the right program for you, your family, or your organization."
+              : "Notre équipe est là pour vous aider à trouver le bon programme pour vous, votre famille ou votre organisation."}
           </p>
           <div className="space-y-3 body-medium">
             <div className="flex items-center gap-2">
@@ -30,7 +33,9 @@ export const ContactSection = () => {
           </div>
           <div className="mt-4 grid gap-4 md:grid-cols-2 body-small">
             <div>
-              <div className="font-semibold mb-1">Address / Adresse</div>
+              <div className="font-semibold mb-1">
+                {isEn ? "Address" : "Adresse"}
+              </div>
               <p>
                 GOSEC – Gatineau Ottawa Social Elite Club
                 <br />
@@ -40,11 +45,17 @@ export const ContactSection = () => {
               </p>
             </div>
             <div>
-              <div className="font-semibold mb-1">Opening hours / Heures d’ouverture</div>
+              <div className="font-semibold mb-1">
+                {isEn ? "Opening hours" : "Heures d’ouverture"}
+              </div>
               <p>
-                Mon–Fri / Lun–Ven: 17:00 – 21:00 (training & programs)
+                {isEn
+                  ? "Mon–Fri: 17:00 – 21:00 (training & programs)"
+                  : "Lun–Ven : 17 h – 21 h (entraînements et programmes)"}
                 <br />
-                Sat–Sun / Sam–Dim: Events, tournaments & community days
+                {isEn
+                  ? "Sat–Sun: Events, tournaments & community days"
+                  : "Sam–Dim : Événements, tournois et journées communautaires"}
               </p>
             </div>
           </div>
@@ -62,12 +73,9 @@ export const ContactSection = () => {
           </div>
           <div className="p-6 space-y-2">
             <p>
-              Stay updated on tournaments, community events, workshops, and family
-              activities.
-            </p>
-            <p>
-              Restez informés de nos tournois, événements communautaires, ateliers
-              et activités familiales.
+              {isEn
+                ? "Stay updated on tournaments, community events, workshops, and family activities."
+                : "Restez informés de nos tournois, événements communautaires, ateliers et activités familiales."}
             </p>
           </div>
         </div>
