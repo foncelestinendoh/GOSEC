@@ -37,16 +37,12 @@ export const ProgramsSection = () => {
                   <div className="flex-1 text-left">
                     <CardHeader className="p-0 mb-3">
                       <CardTitle className="network-card-title">
-                        {cat.titleEn}
-                        <span className="block mt-1">{cat.titleFr}</span>
+                        {isEn ? cat.titleEn : cat.titleFr}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="p-0">
                       <p className="body-medium">
-                        {cat.descriptionEn}
-                        <span className="block mt-1 body-small">
-                          {cat.descriptionFr}
-                        </span>
+                        {isEn ? cat.descriptionEn : cat.descriptionFr}
                       </p>
                     </CardContent>
                   </div>
