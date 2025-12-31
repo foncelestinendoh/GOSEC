@@ -29,22 +29,9 @@ export const AboutSection = () => {
               <h3 className="heading-3 mb-2 text-black">{isEn ? "Mission" : "Mission"}</h3>
               <p className="max-w-2xl mx-auto">{mission}</p>
             </div>
-            <div className="grid md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-6 items-center text-left md:text-left">
-              <div>
-                <h3 className="heading-3 mb-2 text-black">{isEn ? "Vision" : "Vision"}</h3>
-                <p className="max-w-2xl mx-auto">{vision}</p>
-              </div>
-              <div className="h-40 md:h-48 w-full overflow-hidden rounded-3xl shadow-md">
-                <img
-                  src="https://images.pexels.com/photos/9553914/pexels-photo-9553914.jpeg?w=900&auto=compress&cs=tinysrgb"
-                  alt={
-                    isEn
-                      ? "Afro-descendant youth in a creative studio with light trails, symbolizing an innovative future vision"
-                      : "Jeunes afro-descendants dans un studio créatif avec des jeux de lumière, symbolisant une vision d'avenir innovante"
-                  }
-                  className="h-full w-full object-cover"
-                />
-              </div>
+            <div>
+              <h3 className="heading-3 mb-2 text-black">{isEn ? "Vision" : "Vision"}</h3>
+              <p className="max-w-2xl mx-auto">{vision}</p>
             </div>
           </div>
         </div>
