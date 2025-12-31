@@ -1,13 +1,14 @@
 import React from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const events = [
   {
     id: "indoor-soccer",
-    date: "February 8, 2026",
+    dateEn: "February 8, 2026",
     dateFr: "8 février 2026",
     titleEn: "Indoor Soccer Winter League Kickoff",
     titleFr: "Lancement de la ligue hivernale de soccer intérieur",
-    locationEn: "Centre sportif intérieur – Gatineau",
+    locationEn: "Indoor Sports Centre – Gatineau",
     locationFr: "Centre sportif intérieur – Gatineau",
     image:
       "https://images.pexels.com/photos/13318212/pexels-photo-13318212.jpeg?w=1200&auto=compress&cs=tinysrgb",
@@ -18,7 +19,7 @@ const events = [
   },
   {
     id: "community-bbq",
-    date: "June 15, 2026",
+    dateEn: "June 15, 2026",
     dateFr: "15 juin 2026",
     titleEn: "Community BBQ & Family Fun Day",
     titleFr: "BBQ communautaire et journée familiale",
@@ -33,7 +34,7 @@ const events = [
   },
   {
     id: "general-assembly",
-    date: "March 22, 2026",
+    dateEn: "March 22, 2026",
     dateFr: "22 mars 2026",
     titleEn: "GOSEC General Assembly Meeting",
     titleFr: "Assemblée générale de GOSEC",
@@ -48,7 +49,7 @@ const events = [
   },
   {
     id: "career-fair",
-    date: "May 10, 2026",
+    dateEn: "May 10, 2026",
     dateFr: "10 mai 2026",
     titleEn: "Youth Career Orientation & Job Fair",
     titleFr: "Orientation de carrière et foire d’emploi pour les jeunes",
@@ -63,7 +64,7 @@ const events = [
   },
   {
     id: "canada-veteran-tournament",
-    date: "July 19–21, 2026",
+    dateEn: "July 19–21, 2026",
     dateFr: "19–21 juillet 2026",
     titleEn: "Canada National Veteran Tournament – Edmonton",
     titleFr: "Tournoi national canadien des vétérans – Edmonton",
@@ -79,21 +80,20 @@ const events = [
 ];
 
 export const EventsPage = () => {
+  const { language } = useLanguage();
+  const isEn = language === "en";
+
   return (
     <section className="py-[72px] bg-[#F7F7F7]">
       <div className="container max-w-[1100px] mx-auto px-4 space-y-8">
         <div className="max-w-2xl mx-auto text-center" data-aos="fade-up">
           <h1 className="heading-1 text-black mb-3">
-            Upcoming Events / Événements à venir
+            {isEn ? "Upcoming Events" : "Événements à venir"}
           </h1>
           <p className="body-large text-black/80">
-            Discover the key GOSEC events planned for next year across soccer,
-            community life, and career development.
-            <span className="block mt-1">
-              Découvrez les principaux événements GOSEC prévus pour l’année
-              prochaine autour du soccer, de la vie communautaire et du
-              développement de carrière.
-            </span>
+            {isEn
+              ? "Discover the key GOSEC events planned for next year across soccer, community life, and career development."
+              : "Découvrez les principaux événements GOSEC prévus pour l’année prochaine autour du soccer, de la vie communautaire et du développement de carrière."}
           </p>
         </div>
         <div className="space-y-6" data-aos="fade-up" data-aos-delay="150">
@@ -105,34 +105,25 @@ export const EventsPage = () => {
               <div className="md:w-2/5 h-56 md:h-64 overflow-hidden">
                 <img
                   src={event.image}
-                  alt={event.titleEn}
+                  alt={isEn ? event.titleEn : event.titleFr}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="md:w-3/5 p-6 md:p-8 flex flex-col justify-between">
                 <div className="space-y-2">
                   <div className="text-xs font-semibold tracking-[0.15em] uppercase text-black/60">
-                    {event.date} • {event.dateFr}
+                    {isEn ? event.dateEn : event.dateFr}
                   </div>
                   <h2 className="heading-3 text-black">
-                    {event.titleEn}
-                    <span className="block mt-1 text-base font-normal">
-                      {event.titleFr}
-                    </span>
+                    {isEn ? event.titleEn : event.titleFr}
                   </h2>
                   <p className="body-small text-black/70">
                     <span className="font-semibold">
-                      {event.locationEn}
-                    </span>
-                    <span className="block">
-                      {event.locationFr}
+                      {isEn ? event.locationEn : event.locationFr}
                     </span>
                   </p>
                   <p className="body-medium text-black/80 mt-2">
-                    {event.summaryEn}
-                    <span className="block mt-1 body-small">
-                      {event.summaryFr}
-                    </span>
+                    {isEn ? event.summaryEn : event.summaryFr}
                   </p>
                 </div>
               </div>
