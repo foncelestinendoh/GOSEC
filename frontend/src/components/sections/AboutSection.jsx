@@ -36,31 +36,6 @@ export const AboutSection = () => {
           </div>
         </div>
         <div
-          data-aos="zoom-in"
-          className="network-card body-small space-y-4 p-0 overflow-hidden max-w-xl"
-        >
-          <div className="h-60 w-full overflow-hidden">
-            <img
-              src="https://images.pexels.com/photos/18414880/pexels-photo-18414880.jpeg?w=900&auto=compress&cs=tinysrgb"
-              alt="Afro-descendant families and youth connecting at a community event"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="p-6 space-y-2">
-            <p className="body-medium font-semibold text-[var(--text-primary)]">
-              {isEn
-                ? "Building bridges between Gatineau and Ottawa."
-                : "Tisser des liens entre Gatineau et Ottawa."}
-            </p>
-            <p>
-              {isEn
-                ? "GOSEC creates safe, welcoming spaces where youth, families, and newcomers can connect, belong, and grow together."
-                : "GOSEC crée des espaces sécuritaires et accueillants où les jeunes, les familles et les nouveaux arrivants peuvent se rencontrer, s’intégrer et grandir ensemble."}
-            </p>
-          </div>
-        </div>
-
-        <div
           data-aos="fade-up"
           className="w-full mt-10 space-y-4"
         >
