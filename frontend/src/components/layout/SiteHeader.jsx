@@ -30,7 +30,14 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
         <Link to="/" className="network-logo">
           GOSEC
         </Link>
-        <nav className="network-nav">
+        <button
+          type="button"
+          className="md:hidden ml-auto text-white text-sm px-3 py-2 rounded-full border border-white/40 bg-black/20"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          {menuOpen ? "Close" : "Menu"}
+        </button>
+        <nav className={`network-nav ${menuOpen ? "flex" : "hidden md:flex"}`}>
           <Link to="/about" className={navLinkClass("/about")}>
             {labels.about}
           </Link>
