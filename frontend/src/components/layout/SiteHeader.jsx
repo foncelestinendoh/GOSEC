@@ -18,6 +18,7 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
   };
 
   const labels = {
+    home: language === "en" ? "Home" : "Accueil",
     about: language === "en" ? "About" : "À propos",
     programs: language === "en" ? "Programs" : "Programmes",
     gallery: language === "en" ? "Gallery" : "Galerie",
