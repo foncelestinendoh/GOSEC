@@ -42,22 +42,22 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
           {menuOpen ? "Close" : "Menu"}
         </button>
         <nav className={`network-nav ${menuOpen ? "flex" : "hidden md:flex"}`}>
-          <Link to="/about" className={navLinkClass("/about")}>
+          <Link to="/about" className={navLinkClass("/about")} onClick={handleNavClick}>
             {labels.about}
           </Link>
-          <Link to="/programs" className={navLinkClass("/programs")}>
+          <Link to="/programs" className={navLinkClass("/programs")} onClick={handleNavClick}>
             {labels.programs}
           </Link>
-          <Link to="/gallery" className={navLinkClass("/gallery")}>
+          <Link to="/gallery" className={navLinkClass("/gallery")} onClick={handleNavClick}>
             {labels.gallery}
           </Link>
-          <Link to="/events" className={navLinkClass("/events")}>
+          <Link to="/events" className={navLinkClass("/events")} onClick={handleNavClick}>
             {labels.events}
           </Link>
-          <Link to="/faqs" className={navLinkClass("/faqs")}>
+          <Link to="/faqs" className={navLinkClass("/faqs")} onClick={handleNavClick}>
             {labels.faqs}
           </Link>
-          <Link to="/contact" className={navLinkClass("/contact")}>
+          <Link to="/contact" className={navLinkClass("/contact")} onClick={handleNavClick}>
             {labels.contact}
           </Link>
         </nav>
