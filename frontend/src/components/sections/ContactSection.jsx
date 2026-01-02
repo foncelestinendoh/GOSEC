@@ -60,25 +60,6 @@ export const ContactSection = () => {
             </div>
           </div>
         </div>
-        <div
-          data-aos="zoom-in"
-          className="network-card space-y-3 body-small p-0 overflow-hidden"
-        >
-          <div className="h-56 w-full overflow-hidden">
-            <img
-              src="https://images.pexels.com/photos/3671579/pexels-photo-3671579.jpeg?w=900&auto=compress&cs=tinysrgb"
-              alt="Black children running together on a soccer field"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="p-6 space-y-2">
-            <p>
-              {isEn
-                ? "Stay updated on tournaments, community events, workshops, and family activities."
-                : "Restez informés de nos tournois, événements communautaires, ateliers et activités familiales."}
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
