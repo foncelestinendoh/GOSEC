@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
   const location = useLocation();
   const { language, setLanguage } = useLanguage();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const isActive = (path) => location.pathname === path;
 
