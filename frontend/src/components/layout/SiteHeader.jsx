@@ -13,6 +13,10 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
   const navLinkClass = (path) =>
     `network-nav-link ${isActive(path) ? "font-semibold" : ""}`;
 
+  const handleNavClick = () => {
+    setMenuOpen(false);
+  };
+
   const labels = {
     about: language === "en" ? "About" : "À propos",
     programs: language === "en" ? "Programs" : "Programmes",
