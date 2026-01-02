@@ -31,15 +31,6 @@ export const ContactSection = () => {
               <span>+1 (000) 000-0000</span>
             </div>
           </div>
-          <div className="mt-6 flex justify-center">
-            <button
-              type="button"
-              onClick={() => document.getElementById("gosec-contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" })}
-              className="btn-primary button-text bg-[#e53935] hover:bg-[#c62828] text-white px-6 py-3 rounded-full"
-            >
-              {isEn ? "Open contact form" : "Ouvrir le formulaire de contact"}
-            </button>
-          </div>
         </div>
       </div>
     </section>
