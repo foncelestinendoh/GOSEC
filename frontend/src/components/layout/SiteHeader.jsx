@@ -32,7 +32,7 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
   return (
     <header className="network-header">
       <div className="nav-wrapper">
-        <Link to="/" className="network-logo">
+        <Link to="/" className="network-logo" onClick={handleNavClick}>
           GOSEC
         </Link>
         <button
