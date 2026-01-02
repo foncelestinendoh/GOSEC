@@ -32,7 +32,7 @@ export const ProgramsSection = () => {
           data-aos="fade-up"
           data-aos-delay="150"
         >
-          {categories.map((cat) => (
+          {orderedCategories.map((cat) => (
             <Card
               key={cat.id}
               className="network-card border-0 p-0 overflow-hidden hover-lift"
