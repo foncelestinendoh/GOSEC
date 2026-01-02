@@ -13,7 +13,7 @@ export const ContactSection = () => {
     >
       <div className="container max-w-[1100px] mx-auto px-4 grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
         <div data-aos="fade-up" className="space-y-4">
-          <h2 className="heading-1 mt-8 text-black">
+          <h2 className="heading-1 mt-8 md:mt-10 text-black">
             {isEn ? "Contact & Support" : "Contact et soutien"}
           </h2>
           <p className="body-large max-w-xl text-black/80">

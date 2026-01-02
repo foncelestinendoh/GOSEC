@@ -87,7 +87,7 @@ export const EventsPage = () => {
     <section className="py-[72px] bg-[#F7F7F7]">
       <div className="container max-w-[1100px] mx-auto px-4 space-y-8">
         <div className="max-w-2xl mx-auto text-center" data-aos="fade-up">
-          <h1 className="heading-1 text-black mb-3">
+          <h1 className="heading-1 text-black mt-8 mb-3">
             {isEn ? "Upcoming Events" : "Événements à venir"}
           </h1>
           <p className="body-large text-black/80">
