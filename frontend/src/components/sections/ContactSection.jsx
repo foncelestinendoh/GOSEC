@@ -22,41 +22,13 @@ export const ContactSection = () => {
               : "Notre équipe est là pour vous aider à trouver le bon programme pour vous, votre famille ou votre organisation."}
           </p>
           <div className="space-y-3 body-medium">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2">
               <Mail className="w-4 h-4 text-[var(--brand-dark)]" />
               <span>info@gosec.ca (example)</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2">
               <Phone className="w-4 h-4 text-[var(--brand-dark)]" />
               <span>+1 (000) 000-0000</span>
-            </div>
-          </div>
-          <div className="mt-4 grid gap-4 md:grid-cols-2 body-small">
-            <div>
-              <div className="font-semibold mb-1">
-                {isEn ? "Address" : "Adresse"}
-              </div>
-              <p>
-                GOSEC – Gatineau Ottawa Social Elite Club
-                <br />
-                Community Fields & Recreation Hub (example)
-                <br />
-                Gatineau–Ottawa, QC
-              </p>
-            </div>
-            <div>
-              <div className="font-semibold mb-1">
-                {isEn ? "Opening hours" : "Heures d’ouverture"}
-              </div>
-              <p>
-                {isEn
-                  ? "Mon–Fri: 17:00 – 21:00 (training & programs)"
-                  : "Lun–Ven : 17 h – 21 h (entraînements et programmes)"}
-                <br />
-                {isEn
-                  ? "Sat–Sun: Events, tournaments & community days"
-                  : "Sam–Dim : Événements, tournois et journées communautaires"}
-              </p>
             </div>
           </div>
         </div>
