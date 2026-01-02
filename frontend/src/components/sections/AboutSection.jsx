@@ -40,7 +40,7 @@ export const AboutSection = () => {
           className="w-full mt-10 space-y-4"
         >
           <h3 className="heading-3 text-black text-center">
-            Leadership & Organigram / Organigramme et direction
+            Leadership Team
           </h3>
           <p className="body-medium text-black/80 text-center max-w-2xl mx-auto">
             Photos and full profiles of the GOSEC leadership team will appear here.
