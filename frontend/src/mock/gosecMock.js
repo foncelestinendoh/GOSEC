@@ -18,21 +18,21 @@ export const sections = {
     categories: [
       {
         id: "soccer",
-        titleEn: "Soccer Programs",
-        titleFr: "Programmes de soccer",
+        titleEn: "Recreational Soccer Programs",
+        titleFr: "Programmes de soccer récréatif",
         descriptionEn:
-          "Youth development, recreational and competitive leagues, and family-friendly soccer sessions.",
+          "Fun, accessible soccer for all levels with a focus on participation, teamwork, and enjoyment.",
         descriptionFr:
-          "Développement des jeunes, ligues récréatives et compétitives, et séances de soccer familiales.",
+          "Soccer récréatif et accessible pour tous les niveaux, axé sur la participation, le travail d’équipe et le plaisir.",
         bulletsEn: [
-          "Youth soccer development (ages 5–18)",
-          "Recreational and competitive leagues",
-          "Adult and family-friendly sessions",
+          "Mixed-age recreational leagues (youth and adults)",
+          "Family-friendly and community pickup sessions",
+          "No tryouts required – all skill levels welcome",
         ],
         bulletsFr: [
-          "Développement du soccer chez les jeunes (5–18 ans)",
-          "Ligues récréatives et compétitives",
-          "Séances amicales pour adultes et familles",
+          "Ligues récréatives mixtes (jeunes et adultes)",
+          "Séances amicales pour familles et communauté",
+          "Aucune sélection requise – tous les niveaux sont les bienvenus",
         ],
       },
       {
