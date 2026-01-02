@@ -9,7 +9,7 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-[72px] bg-[#F7F7F7] border-t border-[var(--border-light)] min-h-[70vh]"
+      className="pt-[72px] pb-6 bg-[#F7F7F7] border-t border-[var(--border-light)] min-h-[70vh]"
     >
       <div className="container max-w-[700px] mx-auto px-4 flex flex-col items-center">
         <div data-aos="fade-up" className="space-y-4 text-center">
