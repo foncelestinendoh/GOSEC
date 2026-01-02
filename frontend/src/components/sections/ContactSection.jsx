@@ -11,8 +11,8 @@ export const ContactSection = () => {
       id="contact"
       className="py-[72px] bg-[#F7F7F7] border-t border-[var(--border-light)]"
     >
-      <div className="container max-w-[1100px] mx-auto px-4 grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
-        <div data-aos="fade-up" className="space-y-4">
+      <div className="container max-w-[700px] mx-auto px-4 flex flex-col items-center">
+        <div data-aos="fade-up" className="space-y-4 text-center">
           <h2 className="heading-1 text-black mt-8 md:mt-10 mb-3">
             {isEn ? "Contact & Support" : "Contact et soutien"}
           </h2>
