@@ -9,6 +9,11 @@ export const ProgramsSection = () => {
   const { language } = useLanguage();
   const isEn = language === "en";
 
+  const orderedCategories = [
+    ...categories.filter((c) => c.id !== "soccer"),
+    ...categories.filter((c) => c.id === "soccer"),
+  ];
+
   return (
     <section id="programs" className="py-[72px] bg-[#F7F7F7]">
       <div className="container max-w-[1100px] mx-auto px-4 space-y-10">
