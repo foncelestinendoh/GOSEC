@@ -44,7 +44,7 @@ export const GalleryPage = () => {
     <section className="py-[72px] bg-white">
       <div className="container max-w-[1100px] mx-auto px-4 space-y-8">
         <div className="max-w-2xl mx-auto text-center" data-aos="fade-up">
-          <h1 className="heading-1 text-black mt-4 mb-3">
+          <h1 className="heading-1 text-black mt-8 mb-3">
             {isEn ? "Gallery" : "Galerie"}
           </h1>
           <p className="body-large text-black/80">
