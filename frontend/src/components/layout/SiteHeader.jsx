@@ -43,6 +43,9 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
           {menuOpen ? "Close" : "Menu"}
         </button>
         <nav className={`network-nav ${menuOpen ? "flex" : "hidden md:flex"}`}>
+          <Link to="/" className={navLinkClass("/")} onClick={handleNavClick}>
+            {labels.home}
+          </Link>
           <Link to="/about" className={navLinkClass("/about")} onClick={handleNavClick}>
             {labels.about}
           </Link>
