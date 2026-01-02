@@ -50,9 +50,9 @@ export const ContactPage = () => {
   return (
     <>
       <ContactSection />
-      <section className="pb-[72px] bg-white">
+      <section className="pt-4 pb-[72px] bg-white">
         <div className="container max-w-[700px] mx-auto px-4">
-          <div className="space-y-4 text-center mb-6">
+          <div className="space-y-2 text-center mb-4">
             <h3 className="heading-3 text-black">
               {isEn ? "Send us a message" : "Envoyez-nous un message"}
             </h3>
