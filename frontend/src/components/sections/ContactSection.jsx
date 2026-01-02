@@ -14,7 +14,7 @@ export const ContactSection = () => {
       <div className="container max-w-[700px] mx-auto px-4 flex flex-col items-center">
         <div data-aos="fade-up" className="space-y-4 text-center">
           <h2 className="heading-1 text-black mt-8 md:mt-10 mb-3">
-            {isEn ? "Contact & Support" : "Contact et soutien"}
+            {isEn ? "Contact" : "Contact"}
           </h2>
           <p className="body-large max-w-xl text-black/80">
             {isEn
