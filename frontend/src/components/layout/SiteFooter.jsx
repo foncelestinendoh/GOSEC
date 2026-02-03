@@ -24,32 +24,42 @@ export const SiteFooter = () => {
               {isEn ? "Follow us" : "Suivez-nous"}
             </div>
             <div className="flex items-center gap-3">
+              {/* Facebook */}
               <a
                 href="https://www.facebook.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white text-xs font-semibold"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#1877F2] text-white"
               >
-                f
+                <span className="text-sm font-bold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
+                  f
+                </span>
               </a>
+              {/* TikTok */}
               <a
                 href="https://www.tiktok.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="TikTok"
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white text-xs font-semibold"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white border border-[#25F4EE]"
               >
-                t
+                <span className="text-xs font-semibold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
+                  
+                  t
+                </span>
               </a>
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white text-xs font-semibold"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full text-white bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af]"
               >
-                in
+                <span className="text-xs font-semibold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
+                  ig
+                </span>
               </a>
             </div>
           </div>
