@@ -21,6 +21,39 @@ export const SiteFooter = () => {
         <div className="flex flex-col md:flex-row gap-6 text-xs md:text-right max-w-xl md:justify-end">
           <div className="space-y-1 md:text-left">
             <div className="font-semibold text-[var(--text-primary)] mb-1">
+              {isEn ? "Follow us" : "Suivez-nous"}
+            </div>
+            <p className="flex flex-wrap gap-2">
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="link-text"
+              >
+                Facebook
+              </a>
+              <span>•</span>
+              <a
+                href="https://www.tiktok.com"
+                target="_blank"
+                rel="noreferrer"
+                className="link-text"
+              >
+                TikTok
+              </a>
+              <span>•</span>
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="link-text"
+              >
+                Instagram
+              </a>
+            </p>
+          </div>
+          <div className="space-y-1 md:text-left">
+            <div className="font-semibold text-[var(--text-primary)] mb-1">
               {isEn ? "Address" : "Adresse"}
             </div>
             <p>
