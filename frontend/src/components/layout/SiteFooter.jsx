@@ -23,18 +23,21 @@ export const SiteFooter = () => {
             <div className="font-semibold text-[var(--text-primary)] mb-1">
               {isEn ? "Follow us" : "Suivez-nous"}
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col gap-2">
               {/* Facebook */}
               <a
                 href="https://www.facebook.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#1877F2] text-white"
+                className="inline-flex items-center gap-2 text-black/80"
               >
-                <span className="text-sm font-bold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
-                  f
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#1877F2] text-white">
+                  <span className="text-sm font-bold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
+                    f
+                  </span>
                 </span>
+                <span>Facebook</span>
               </a>
               {/* TikTok */}
               <a
@@ -42,12 +45,14 @@ export const SiteFooter = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="TikTok"
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white border border-[#25F4EE]"
+                className="inline-flex items-center gap-2 text-black/80"
               >
-                <span className="text-xs font-semibold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
-                  
-                  t
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white border border-[#25F4EE]">
+                  <span className="text-xs font-semibold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
+                    t
+                  </span>
                 </span>
+                <span>TikTok</span>
               </a>
               {/* Instagram */}
               <a
@@ -55,11 +60,14 @@ export const SiteFooter = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full text-white bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af]"
+                className="inline-flex items-center gap-2 text-black/80"
               >
-                <span className="text-xs font-semibold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
-                  ig
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full text-white bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af]">
+                  <span className="text-xs font-semibold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
+                    ig
+                  </span>
                 </span>
+                <span>Instagram</span>
               </a>
             </div>
           </div>
