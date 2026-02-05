@@ -1,12 +1,33 @@
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, ConfigDict
 import uuid
+import os
+import shutil
+from pathlib import Path
 
 from database import db
 from routes.auth_routes import get_current_admin
 
 router = APIRouter(prefix="/api", tags=["gallery"])
+
+# Create uploads directory
+UPLOAD_DIR = Path("/app/uploads/gallery")
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+# Allowed image extensions
+ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
+
+
+def get_file_extension(filename: str) -> str:
+    """Get file extension from filename"""
+    return Path(filename).suffix.lower()
+
+
+def is_allowed_file(filename: str) -> bool:
+    """Check if file extension is allowed"""
+    return get_file_extension(filename) in ALLOWED_EXTENSIONS
 
 
 # Helper to convert Mongo docs to response format
@@ -24,7 +45,7 @@ def to_response(doc: dict) -> dict:
 class GalleryItemBase(BaseModel):
     title_en: str
     title_fr: str
-    media_key: str
+    media_key: str = ""
     image_url: str = ""
     order: int = 0
 
@@ -148,7 +169,188 @@ async def update_gallery_item(gallery_id: str, item: GalleryItemUpdate):
 @router.delete("/gallery/{gallery_id}", dependencies=[Depends(get_current_admin)])
 async def delete_gallery_item(gallery_id: str):
     """Delete a gallery item (admin only)"""
-    res = await db.gallery.delete_one({"_id": gallery_id})
-    if res.deleted_count == 0:
+    # Get the item first to check for uploaded image
+    doc = await db.gallery.find_one({"_id": gallery_id})
+    if not doc:
         raise HTTPException(status_code=404, detail="Gallery item not found")
+    
+    # Delete the uploaded image file if it exists
+    if doc.get("image_url", "").startswith("/api/uploads/"):
+        filename = doc["image_url"].split("/")[-1]
+        file_path = UPLOAD_DIR / filename
+        if file_path.exists():
+            file_path.unlink()
+    
+    res = await db.gallery.delete_one({"_id": gallery_id})
     return {"message": "Gallery item deleted"}
+
+
+# Image upload endpoint
+@router.post("/gallery/upload", dependencies=[Depends(get_current_admin)])
+async def upload_gallery_image(file: UploadFile = File(...)):
+    """Upload an image for gallery (admin only)"""
+    
+    # Validate file type
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="No filename provided")
+    
+    if not is_allowed_file(file.filename):
+        raise HTTPException(
+            status_code=400, 
+            detail=f"File type not allowed. Allowed types: {', '.join(ALLOWED_EXTENSIONS)}"
+        )
+    
+    # Generate unique filename
+    file_extension = get_file_extension(file.filename)
+    unique_filename = f"{uuid.uuid4()}{file_extension}"
+    file_path = UPLOAD_DIR / unique_filename
+    
+    # Save the file
+    try:
+        with open(file_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to save file: {str(e)}")
+    
+    # Return the URL path to access the image
+    image_url = f"/api/uploads/gallery/{unique_filename}"
+    
+    return {
+        "filename": unique_filename,
+        "image_url": image_url,
+        "message": "Image uploaded successfully"
+    }
+
+
+# Serve uploaded images
+@router.get("/uploads/gallery/{filename}")
+async def get_uploaded_image(filename: str):
+    """Serve uploaded gallery images"""
+    file_path = UPLOAD_DIR / filename
+    
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="Image not found")
+    
+    # Determine content type
+    extension = get_file_extension(filename)
+    content_types = {
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".png": "image/png",
+        ".gif": "image/gif",
+        ".webp": "image/webp"
+    }
+    content_type = content_types.get(extension, "application/octet-stream")
+    
+    return FileResponse(file_path, media_type=content_type)
+
+
+# Create gallery item with image upload in one request
+@router.post("/gallery/with-image", response_model=GalleryItemResponse, dependencies=[Depends(get_current_admin)])
+async def create_gallery_with_image(
+    title_en: str = Form(...),
+    title_fr: str = Form(...),
+    media_key: str = Form(""),
+    order: int = Form(0),
+    image: UploadFile = File(None)
+):
+    """Create a new gallery item with optional image upload (admin only)"""
+    
+    image_url = ""
+    
+    # Handle image upload if provided
+    if image and image.filename:
+        if not is_allowed_file(image.filename):
+            raise HTTPException(
+                status_code=400, 
+                detail=f"File type not allowed. Allowed types: {', '.join(ALLOWED_EXTENSIONS)}"
+            )
+        
+        file_extension = get_file_extension(image.filename)
+        unique_filename = f"{uuid.uuid4()}{file_extension}"
+        file_path = UPLOAD_DIR / unique_filename
+        
+        try:
+            with open(file_path, "wb") as buffer:
+                shutil.copyfileobj(image.file, buffer)
+            image_url = f"/api/uploads/gallery/{unique_filename}"
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to save image: {str(e)}")
+    
+    # Create gallery item
+    doc = {
+        "_id": str(uuid.uuid4()),
+        "title_en": title_en,
+        "title_fr": title_fr,
+        "media_key": media_key,
+        "image_url": image_url,
+        "order": order
+    }
+    
+    await db.gallery.insert_one(doc)
+    return to_response(doc)
+
+
+# Update gallery item with image upload
+@router.put("/gallery/{gallery_id}/with-image", response_model=GalleryItemResponse, dependencies=[Depends(get_current_admin)])
+async def update_gallery_with_image(
+    gallery_id: str,
+    title_en: str = Form(None),
+    title_fr: str = Form(None),
+    media_key: str = Form(None),
+    order: int = Form(None),
+    image: UploadFile = File(None)
+):
+    """Update gallery item with optional new image upload (admin only)"""
+    
+    # Check if item exists
+    doc = await db.gallery.find_one({"_id": gallery_id})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Gallery item not found")
+    
+    update_data = {}
+    
+    # Add form fields if provided
+    if title_en is not None:
+        update_data["title_en"] = title_en
+    if title_fr is not None:
+        update_data["title_fr"] = title_fr
+    if media_key is not None:
+        update_data["media_key"] = media_key
+    if order is not None:
+        update_data["order"] = order
+    
+    # Handle image upload if provided
+    if image and image.filename:
+        if not is_allowed_file(image.filename):
+            raise HTTPException(
+                status_code=400, 
+                detail=f"File type not allowed. Allowed types: {', '.join(ALLOWED_EXTENSIONS)}"
+            )
+        
+        # Delete old uploaded image if exists
+        old_url = doc.get("image_url", "")
+        if old_url.startswith("/api/uploads/"):
+            old_filename = old_url.split("/")[-1]
+            old_path = UPLOAD_DIR / old_filename
+            if old_path.exists():
+                old_path.unlink()
+        
+        # Save new image
+        file_extension = get_file_extension(image.filename)
+        unique_filename = f"{uuid.uuid4()}{file_extension}"
+        file_path = UPLOAD_DIR / unique_filename
+        
+        try:
+            with open(file_path, "wb") as buffer:
+                shutil.copyfileobj(image.file, buffer)
+            update_data["image_url"] = f"/api/uploads/gallery/{unique_filename}"
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to save image: {str(e)}")
+    
+    if not update_data:
+        raise HTTPException(status_code=400, detail="No fields to update")
+    
+    await db.gallery.update_one({"_id": gallery_id}, {"$set": update_data})
+    doc = await db.gallery.find_one({"_id": gallery_id})
+    return to_response(doc)
