@@ -5,7 +5,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel, EmailStr, Field
 from bson import ObjectId
 
-from backend.database import db
+from database import db
 
 router = APIRouter(prefix="/api/forms", tags=["forms"])
 

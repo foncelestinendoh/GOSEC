@@ -4,8 +4,8 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 from bson import ObjectId
 
-from backend.database import db
-from backend.routes.auth_routes import get_current_admin
+from database import db
+from routes.auth_routes import get_current_admin
 
 router = APIRouter(prefix="/api", tags=["content"])
 
