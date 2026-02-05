@@ -47,7 +47,7 @@ export const SiteFooter = () => {
                 aria-label="TikTok"
                 className="inline-flex items-center gap-2 text-gray-300 hover:text-white"
               >
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white border border-[#25F4EE]">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--brand-oxblood)] text-white">
                   <span className="text-xs font-semibold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
                     t
                   </span>
