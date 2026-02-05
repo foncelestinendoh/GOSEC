@@ -3,22 +3,35 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { formsApi } from "@/services/api";
 
 export const JoinProgramDialog = ({ open, onOpenChange, onSubmitted }) => {
-  const [form, setForm] = useState({ name: "", email: "", ageGroup: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", age_group: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    setError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const existing = JSON.parse(localStorage.getItem("gosec_join_program") || "[]");
-    existing.push({ ...form, createdAt: new Date().toISOString() });
-    localStorage.setItem("gosec_join_program", JSON.stringify(existing));
-    onSubmitted?.();
-    onOpenChange(false);
+    setLoading(true);
+    setError("");
+    
+    try {
+      await formsApi.submitJoin(form);
+      onSubmitted?.();
+      onOpenChange(false);
+      setForm({ name: "", email: "", age_group: "", message: "" });
+    } catch (err) {
+      console.error("Error submitting join form:", err);
+      setError("Failed to submit. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -52,16 +65,16 @@ export const JoinProgramDialog = ({ open, onOpenChange, onSubmitted }) => {
             />
           </div>
           <div>
-            <label className="block mb-1">Age group / Groupe d’âge</label>
+            <label className="block mb-1">Age group / Groupe d'âge</label>
             <Input
-              name="ageGroup"
-              value={form.ageGroup}
+              name="age_group"
+              value={form.age_group}
               onChange={handleChange}
               placeholder="Youth 5–12, Youth 13–18, Adult, Family..."
             />
           </div>
           <div>
-            <label className="block mb-1">Programs of interest / Programmes d’intérêt</label>
+            <label className="block mb-1">Programs of interest / Programmes d'intérêt</label>
             <Textarea
               name="message"
               value={form.message}
@@ -70,17 +83,19 @@ export const JoinProgramDialog = ({ open, onOpenChange, onSubmitted }) => {
               placeholder="Soccer, youth leadership, family days, newcomer support, etc."
             />
           </div>
+          {error && <p className="text-red-600 text-sm">{error}</p>}
           <div className="flex justify-end gap-3 pt-2">
             <Button
               type="button"
               variant="outline"
               className="btn-secondary"
               onClick={() => onOpenChange(false)}
+              disabled={loading}
             >
               Cancel / Annuler
             </Button>
-            <Button type="submit" className="btn-primary button-text">
-              Submit / Envoyer
+            <Button type="submit" className="btn-primary button-text" disabled={loading}>
+              {loading ? "Submitting..." : "Submit / Envoyer"}
             </Button>
           </div>
         </form>
