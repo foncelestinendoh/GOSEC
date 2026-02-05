@@ -65,6 +65,7 @@ const AdminDashboard = () => {
     { title: 'Programs', count: stats.programs, icon: Users, color: 'bg-blue-500' },
     { title: 'Gallery Items', count: stats.gallery, icon: Image, color: 'bg-green-500' },
     { title: 'Events', count: stats.events, icon: Calendar, color: 'bg-purple-500' },
+    { title: 'Leadership', count: stats.leadership, icon: UserCircle, color: 'bg-orange-500' },
   ];
 
   return (
