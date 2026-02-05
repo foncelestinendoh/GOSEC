@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { 
   Home, Users, Image, Calendar, FileText, MessageSquare, 
-  DollarSign, LogOut, Menu, X, Settings
+  DollarSign, LogOut, Menu, X, Settings, UserCircle
 } from 'lucide-react';
-import { contentApi, programsApi, galleryApi, eventsApi, formsApi } from '@/services/api';
+import { contentApi, programsApi, galleryApi, eventsApi, formsApi, leadershipApi } from '@/services/api';
 
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
@@ -17,6 +17,7 @@ const AdminDashboard = () => {
     programs: 0,
     gallery: 0,
     events: 0,
+    leadership: 0,
     contacts: 0,
     donations: 0,
     joins: 0
@@ -25,16 +26,18 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [programs, gallery, events] = await Promise.all([
+        const [programs, gallery, events, leadership] = await Promise.all([
           programsApi.getAll(),
           galleryApi.getAll(),
-          eventsApi.getAll()
+          eventsApi.getAll(),
+          leadershipApi.getAll()
         ]);
         setStats(prev => ({
           ...prev,
           programs: programs.data.length,
           gallery: gallery.data.length,
-          events: events.data.length
+          events: events.data.length,
+          leadership: leadership.data.length
         }));
       } catch (err) {
         console.error('Error fetching stats:', err);
@@ -51,6 +54,7 @@ const AdminDashboard = () => {
   const navItems = [
     { name: 'Dashboard', path: '/admin/dashboard', icon: Home },
     { name: 'Hero & About', path: '/admin/content', icon: FileText },
+    { name: 'Leadership Team', path: '/admin/leadership', icon: UserCircle },
     { name: 'Programs', path: '/admin/programs', icon: Users },
     { name: 'Gallery', path: '/admin/gallery', icon: Image },
     { name: 'Events', path: '/admin/events', icon: Calendar },
