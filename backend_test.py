@@ -229,20 +229,20 @@ class GOSECAPITester:
         if response and response.status_code == 200:
             try:
                 gallery = response.json()
-                if isinstance(gallery, list) and len(gallery) == 6:
+                if isinstance(gallery, list) and len(gallery) >= 6:
                     # Check if all items have image_url
                     all_have_images = all("image_url" in item and item["image_url"] for item in gallery)
                     if all_have_images:
-                        print_success(f"Gallery API working - returned {len(gallery)} items with image URLs")
+                        print_success(f"Gallery API working - returned {len(gallery)} items with image URLs (expected 6+ due to uploads)")
                         self.test_results["passed"] += 1
                     else:
                         print_error("Some gallery items missing image_url")
                         self.test_results["failed"] += 1
                         self.test_results["errors"].append("Some gallery items missing image_url")
                 else:
-                    print_error(f"Expected 6 gallery items, got {len(gallery) if isinstance(gallery, list) else 'non-list'}")
+                    print_error(f"Expected at least 6 gallery items, got {len(gallery) if isinstance(gallery, list) else 'non-list'}")
                     self.test_results["failed"] += 1
-                    self.test_results["errors"].append(f"Expected 6 gallery items, got {len(gallery) if isinstance(gallery, list) else 'non-list'}")
+                    self.test_results["errors"].append(f"Expected at least 6 gallery items, got {len(gallery) if isinstance(gallery, list) else 'non-list'}")
             except json.JSONDecodeError:
                 print_error("Invalid JSON response from gallery")
                 self.test_results["failed"] += 1
