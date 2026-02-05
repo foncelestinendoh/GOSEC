@@ -83,22 +83,29 @@ code {
 }
 
 :root {
-    --bg-page: #FAFFEE;
-    --bg-card: #FAFAFF;
-    --bg-subtle: #EDEDFE;
-    --bg-section: #CACAFC;
+    --bg-page: #F8F9FA;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #E8EDF2;
+    --bg-section: #DDE4EC;
 
-    --text-primary: #004534;
-    --text-secondary: #0C6951;
-    --text-light: #807979;
+    --text-primary: #1A2942;
+    --text-secondary: #2D4263;
+    --text-light: #6B7280;
 
-    --border-light: #CACAFC;
-    --border-medium: #DDDDDD;
-    --border-strong: #B0B0B0;
+    --border-light: #DDE4EC;
+    --border-medium: #C4CCD8;
+    --border-strong: #9CA8B8;
 
-    --brand-primary: #D3FF62;
-    --brand-dark: #004534;
-    --brand-hover: #0C6951;
+    /* Brand Colors: Navy Blue, Ox-blood Red, Black, White */
+    --brand-navy: #1A2942;
+    --brand-oxblood: #7B2D3E;
+    --brand-black: #111827;
+    --brand-white: #FFFFFF;
+    
+    --brand-primary: #7B2D3E;
+    --brand-dark: #1A2942;
+    --brand-hover: #2D4263;
+    --brand-accent: #7B2D3E;
 
     --spacing-xs: 8px;
     --spacing-small: 16px;
