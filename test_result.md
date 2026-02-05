@@ -315,10 +315,6 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Programs CRUD API"
-    - "Gallery CRUD API"
-    - "Events CRUD API"
-    - "Forms API"
     - "Frontend Forms - Backend Integration"
   stuck_tasks: []
   test_all: false
