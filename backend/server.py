@@ -10,6 +10,11 @@ from typing import List
 import uuid
 from datetime import datetime, timezone
 
+# Import route modules
+from routes.auth_routes import router as auth_router
+from routes.content_routes import router as content_router
+from routes.forms_routes import router as forms_router
+
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
