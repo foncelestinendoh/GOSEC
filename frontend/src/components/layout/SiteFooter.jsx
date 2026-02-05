@@ -20,7 +20,7 @@ export const SiteFooter = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-6 text-xs md:text-right max-w-xl md:justify-end">
           <div className="space-y-1 md:text-left">
-            <div className="font-semibold text-[var(--text-primary)] mb-1">
+            <div className="font-semibold text-white mb-1">
               {isEn ? "Follow us" : "Suivez-nous"}
             </div>
             <div className="flex flex-col gap-2">
@@ -72,7 +72,7 @@ export const SiteFooter = () => {
             </div>
           </div>
           <div className="space-y-1 md:text-left">
-            <div className="font-semibold text-[var(--text-primary)] mb-1">
+            <div className="font-semibold text-white mb-1">
               {isEn ? "Address" : "Adresse"}
             </div>
             <p>
@@ -84,7 +84,7 @@ export const SiteFooter = () => {
             </p>
           </div>
           <div className="space-y-1 md:text-left">
-            <div className="font-semibold text-[var(--text-primary)] mb-1">
+            <div className="font-semibold text-white mb-1">
               {isEn ? "Opening hours" : "Heures d’ouverture"}
             </div>
             <p>
@@ -98,7 +98,7 @@ export const SiteFooter = () => {
             </p>
           </div>
           <div className="space-y-1 md:text-left">
-            <div className="font-semibold text-[var(--text-primary)] mb-1">
+            <div className="font-semibold text-white mb-1">
               {isEn ? "Location" : "Localisation"}
             </div>
             <p>
