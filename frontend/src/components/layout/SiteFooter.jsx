@@ -12,7 +12,7 @@ export const SiteFooter = () => {
           <div className="font-semibold text-white mb-1">
             GOSEC – Gatineau Ottawa Social Elite Club
           </div>
-          <div className="text-black/80">
+          <div className="text-gray-300">
             {isEn
               ? "Building healthy, inclusive, and connected communities."
               : "Construire des communautés inclusives et en santé."}
