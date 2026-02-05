@@ -42,6 +42,42 @@ export const galleryApi = {
   create: (data) => api.post('/api/gallery', data),
   update: (id, data) => api.put(`/api/gallery/${id}`, data),
   delete: (id) => api.delete(`/api/gallery/${id}`),
+  // Image upload
+  uploadImage: (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return api.post('/api/gallery/upload', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
+  // Create with image upload
+  createWithImage: (data, imageFile) => {
+    const formData = new FormData();
+    formData.append('title_en', data.title_en);
+    formData.append('title_fr', data.title_fr);
+    formData.append('media_key', data.media_key || '');
+    formData.append('order', data.order || 0);
+    if (imageFile) {
+      formData.append('image', imageFile);
+    }
+    return api.post('/api/gallery/with-image', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
+  // Update with image upload
+  updateWithImage: (id, data, imageFile) => {
+    const formData = new FormData();
+    if (data.title_en !== undefined) formData.append('title_en', data.title_en);
+    if (data.title_fr !== undefined) formData.append('title_fr', data.title_fr);
+    if (data.media_key !== undefined) formData.append('media_key', data.media_key);
+    if (data.order !== undefined) formData.append('order', data.order);
+    if (imageFile) {
+      formData.append('image', imageFile);
+    }
+    return api.put(`/api/gallery/${id}/with-image`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
 };
 
 // Events APIs
