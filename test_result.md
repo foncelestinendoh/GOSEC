@@ -134,6 +134,9 @@ backend:
       - working: true
         agent: "main"
         comment: "GET/PUT for hero and about content working"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Content APIs working correctly - hero content returns title_en/fr, subtitle_en/fr, tagline_en/fr; about content returns mission, vision, about in EN/FR"
 
   - task: "Programs CRUD API"
     implemented: true
