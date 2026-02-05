@@ -85,6 +85,7 @@ app.include_router(forms_router)
 app.include_router(programs_router)
 app.include_router(gallery_router)
 app.include_router(events_router)
+app.include_router(leadership_router)
 
 app.add_middleware(
     CORSMiddleware,
