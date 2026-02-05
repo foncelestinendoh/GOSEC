@@ -1,18 +1,35 @@
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
 import uuid
+import shutil
+from pathlib import Path
 
 from database import db
 from routes.auth_routes import get_current_admin
 
 router = APIRouter(prefix="/api", tags=["events"])
 
+# Create uploads directory
+UPLOAD_DIR = Path("/app/uploads/events")
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+# Allowed image extensions
+ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
+
+
+def get_file_extension(filename: str) -> str:
+    return Path(filename).suffix.lower()
+
+
+def is_allowed_file(filename: str) -> bool:
+    return get_file_extension(filename) in ALLOWED_EXTENSIONS
+
 
 # Helper to convert Mongo docs to response format
 def to_response(doc: dict) -> dict:
-    """Convert MongoDB doc, converting _id to string id"""
     if doc is None:
         return None
     result = dict(doc)
@@ -38,7 +55,6 @@ class EventBase(BaseModel):
 
 class EventResponse(EventBase):
     id: str
-
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -123,10 +139,8 @@ DEFAULT_EVENTS = [
 
 @router.get("/events", response_model=List[EventResponse])
 async def list_events():
-    """Get all events sorted by order"""
     items = await db.events.find().sort("order", 1).to_list(100)
     if not items:
-        # Insert default events
         for event in DEFAULT_EVENTS:
             await db.events.insert_one(event)
         items = await db.events.find().sort("order", 1).to_list(100)
@@ -135,7 +149,6 @@ async def list_events():
 
 @router.get("/events/{event_id}", response_model=EventResponse)
 async def get_event(event_id: str):
-    """Get a single event by ID"""
     doc = await db.events.find_one({"_id": event_id})
     if not doc:
         raise HTTPException(status_code=404, detail="Event not found")
@@ -144,7 +157,6 @@ async def get_event(event_id: str):
 
 @router.post("/events", response_model=EventResponse, dependencies=[Depends(get_current_admin)])
 async def create_event(event: EventCreate):
-    """Create a new event (admin only)"""
     doc = event.model_dump()
     doc["_id"] = str(uuid.uuid4())
     await db.events.insert_one(doc)
@@ -153,7 +165,6 @@ async def create_event(event: EventCreate):
 
 @router.put("/events/{event_id}", response_model=EventResponse, dependencies=[Depends(get_current_admin)])
 async def update_event(event_id: str, event: EventUpdate):
-    """Update an existing event (admin only)"""
     update_data = {k: v for k, v in event.model_dump().items() if v is not None}
     if not update_data:
         raise HTTPException(status_code=400, detail="No fields to update")
@@ -168,8 +179,171 @@ async def update_event(event_id: str, event: EventUpdate):
 
 @router.delete("/events/{event_id}", dependencies=[Depends(get_current_admin)])
 async def delete_event(event_id: str):
-    """Delete an event (admin only)"""
-    res = await db.events.delete_one({"_id": event_id})
-    if res.deleted_count == 0:
+    doc = await db.events.find_one({"_id": event_id})
+    if not doc:
         raise HTTPException(status_code=404, detail="Event not found")
+    
+    # Delete uploaded image if exists
+    if doc.get("image_url", "").startswith("/api/uploads/"):
+        filename = doc["image_url"].split("/")[-1]
+        file_path = UPLOAD_DIR / filename
+        if file_path.exists():
+            file_path.unlink()
+    
+    await db.events.delete_one({"_id": event_id})
     return {"message": "Event deleted"}
+
+
+# Image upload endpoint
+@router.post("/events/upload", dependencies=[Depends(get_current_admin)])
+async def upload_event_image(file: UploadFile = File(...)):
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="No filename provided")
+    
+    if not is_allowed_file(file.filename):
+        raise HTTPException(
+            status_code=400, 
+            detail=f"File type not allowed. Allowed types: {', '.join(ALLOWED_EXTENSIONS)}"
+        )
+    
+    file_extension = get_file_extension(file.filename)
+    unique_filename = f"{uuid.uuid4()}{file_extension}"
+    file_path = UPLOAD_DIR / unique_filename
+    
+    try:
+        with open(file_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to save file: {str(e)}")
+    
+    image_url = f"/api/uploads/events/{unique_filename}"
+    return {"filename": unique_filename, "image_url": image_url, "message": "Image uploaded successfully"}
+
+
+# Serve uploaded images
+@router.get("/uploads/events/{filename}")
+async def get_uploaded_event_image(filename: str):
+    file_path = UPLOAD_DIR / filename
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="Image not found")
+    
+    extension = get_file_extension(filename)
+    content_types = {
+        ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
+        ".png": "image/png", ".gif": "image/gif", ".webp": "image/webp"
+    }
+    return FileResponse(file_path, media_type=content_types.get(extension, "application/octet-stream"))
+
+
+# Create event with image upload
+@router.post("/events/with-image", response_model=EventResponse, dependencies=[Depends(get_current_admin)])
+async def create_event_with_image(
+    date_en: str = Form(...),
+    date_fr: str = Form(...),
+    title_en: str = Form(...),
+    title_fr: str = Form(...),
+    location_en: str = Form(...),
+    location_fr: str = Form(...),
+    summary_en: str = Form(...),
+    summary_fr: str = Form(...),
+    media_key: str = Form(""),
+    order: int = Form(0),
+    image: UploadFile = File(None)
+):
+    image_url = ""
+    
+    if image and image.filename:
+        if not is_allowed_file(image.filename):
+            raise HTTPException(status_code=400, detail=f"File type not allowed")
+        
+        file_extension = get_file_extension(image.filename)
+        unique_filename = f"{uuid.uuid4()}{file_extension}"
+        file_path = UPLOAD_DIR / unique_filename
+        
+        try:
+            with open(file_path, "wb") as buffer:
+                shutil.copyfileobj(image.file, buffer)
+            image_url = f"/api/uploads/events/{unique_filename}"
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to save image: {str(e)}")
+    
+    doc = {
+        "_id": str(uuid.uuid4()),
+        "date_en": date_en,
+        "date_fr": date_fr,
+        "title_en": title_en,
+        "title_fr": title_fr,
+        "location_en": location_en,
+        "location_fr": location_fr,
+        "summary_en": summary_en,
+        "summary_fr": summary_fr,
+        "media_key": media_key,
+        "image_url": image_url,
+        "order": order
+    }
+    
+    await db.events.insert_one(doc)
+    return to_response(doc)
+
+
+# Update event with image upload
+@router.put("/events/{event_id}/with-image", response_model=EventResponse, dependencies=[Depends(get_current_admin)])
+async def update_event_with_image(
+    event_id: str,
+    date_en: str = Form(None),
+    date_fr: str = Form(None),
+    title_en: str = Form(None),
+    title_fr: str = Form(None),
+    location_en: str = Form(None),
+    location_fr: str = Form(None),
+    summary_en: str = Form(None),
+    summary_fr: str = Form(None),
+    media_key: str = Form(None),
+    order: int = Form(None),
+    image: UploadFile = File(None)
+):
+    doc = await db.events.find_one({"_id": event_id})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Event not found")
+    
+    update_data = {}
+    if date_en is not None: update_data["date_en"] = date_en
+    if date_fr is not None: update_data["date_fr"] = date_fr
+    if title_en is not None: update_data["title_en"] = title_en
+    if title_fr is not None: update_data["title_fr"] = title_fr
+    if location_en is not None: update_data["location_en"] = location_en
+    if location_fr is not None: update_data["location_fr"] = location_fr
+    if summary_en is not None: update_data["summary_en"] = summary_en
+    if summary_fr is not None: update_data["summary_fr"] = summary_fr
+    if media_key is not None: update_data["media_key"] = media_key
+    if order is not None: update_data["order"] = order
+    
+    if image and image.filename:
+        if not is_allowed_file(image.filename):
+            raise HTTPException(status_code=400, detail=f"File type not allowed")
+        
+        # Delete old image
+        old_url = doc.get("image_url", "")
+        if old_url.startswith("/api/uploads/"):
+            old_filename = old_url.split("/")[-1]
+            old_path = UPLOAD_DIR / old_filename
+            if old_path.exists():
+                old_path.unlink()
+        
+        file_extension = get_file_extension(image.filename)
+        unique_filename = f"{uuid.uuid4()}{file_extension}"
+        file_path = UPLOAD_DIR / unique_filename
+        
+        try:
+            with open(file_path, "wb") as buffer:
+                shutil.copyfileobj(image.file, buffer)
+            update_data["image_url"] = f"/api/uploads/events/{unique_filename}"
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to save image: {str(e)}")
+    
+    if not update_data:
+        raise HTTPException(status_code=400, detail="No fields to update")
+    
+    await db.events.update_one({"_id": event_id}, {"$set": update_data})
+    doc = await db.events.find_one({"_id": event_id})
+    return to_response(doc)
