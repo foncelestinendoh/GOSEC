@@ -81,6 +81,9 @@ app.include_router(api_router)
 app.include_router(auth_router)
 app.include_router(content_router)
 app.include_router(forms_router)
+app.include_router(programs_router)
+app.include_router(gallery_router)
+app.include_router(events_router)
 
 app.add_middleware(
     CORSMiddleware,
