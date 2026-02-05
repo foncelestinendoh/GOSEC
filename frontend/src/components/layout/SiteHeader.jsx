@@ -87,14 +87,14 @@ export const SiteHeader = ({ onJoinClick, onMemberClick, onContactClick }) => {
             </button>
           </div>
           <Button
-            className="btn-small btn-primary bg-[#e53935] hover:bg-[#c62828] text-white"
+            className="btn-small btn-primary bg-[var(--brand-oxblood)] hover:bg-[#5C2230] text-white"
             onClick={onJoinClick}
           >
             {labels.join}
           </Button>
           <Button
             variant="outline"
-            className="btn-small btn-secondary border border-[#1565c0] text-[#1565c0] hover:bg-[#1565c0] hover:text-white"
+            className="btn-small btn-secondary border border-[var(--brand-navy)] text-[var(--brand-navy)] hover:bg-[var(--brand-navy)] hover:text-white"
             onClick={onMemberClick}
           >
             {labels.member}
