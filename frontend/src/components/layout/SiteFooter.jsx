@@ -6,7 +6,7 @@ export const SiteFooter = () => {
   const isEn = language === "en";
 
   return (
-    <footer className="border-t border-[var(--border-light)] bg-[#F7F7F7] mt-16">
+    <footer className="border-t border-[var(--border-light)] bg-[var(--brand-navy)] mt-16">
       <div className="container max-w-[1200px] mx-auto px-4 py-12 flex flex-col lg:flex-row items-start lg:items-start justify-between gap-10 body-small text-[var(--text-light)]">
         <div className="space-y-3 max-w-md">
           <div className="font-semibold text-black mb-1">
