@@ -9,7 +9,7 @@ export const SiteFooter = () => {
     <footer className="border-t border-[var(--border-light)] bg-[var(--brand-navy)] mt-16">
       <div className="container max-w-[1200px] mx-auto px-4 py-12 flex flex-col lg:flex-row items-start lg:items-start justify-between gap-10 body-small text-gray-300">
         <div className="space-y-3 max-w-md">
-          <div className="font-semibold text-black mb-1">
+          <div className="font-semibold text-white mb-1">
             GOSEC – Gatineau Ottawa Social Elite Club
           </div>
           <div className="text-black/80">
