@@ -287,8 +287,176 @@ class GOSECAPITester:
             self.test_results["failed"] += 1
             self.test_results["errors"].append("Events API failed")
 
+    def test_leadership_api(self):
+        """Test 6: Leadership API - NEW FEATURE"""
+        print_header("Testing Leadership API (NEW FEATURE)")
+        
+        response = self.make_request("GET", "/leadership")
+        if response and response.status_code == 200:
+            try:
+                leadership = response.json()
+                if isinstance(leadership, list) and len(leadership) == 8:
+                    # Check if first member is Jean-Pierre Mbeki with correct role
+                    first_member = leadership[0]
+                    if (first_member.get("name") == "Jean-Pierre Mbeki" and 
+                        first_member.get("role_en") == "Founder & President"):
+                        print_success("Leadership API working - 8 members returned, Jean-Pierre Mbeki is first with correct role")
+                        
+                        # Verify all required fields are present
+                        required_fields = ["name", "role_en", "role_fr", "bio_en", "bio_fr", "email", "image_url"]
+                        all_valid = all(
+                            all(field in member for field in required_fields) 
+                            for member in leadership
+                        )
+                        if all_valid:
+                            print_success("All leadership members have required fields (name, role_en, role_fr, bio, email, image_url)")
+                            self.test_results["passed"] += 1
+                        else:
+                            print_error("Some leadership members missing required fields")
+                            self.test_results["failed"] += 1
+                            self.test_results["errors"].append("Some leadership members missing required fields")
+                    else:
+                        print_error(f"First member should be Jean-Pierre Mbeki with role 'Founder & President', got: {first_member.get('name')} - {first_member.get('role_en')}")
+                        self.test_results["failed"] += 1
+                        self.test_results["errors"].append("First leadership member incorrect")
+                else:
+                    print_error(f"Expected 8 leadership members, got {len(leadership) if isinstance(leadership, list) else 'non-list'}")
+                    self.test_results["failed"] += 1
+                    self.test_results["errors"].append(f"Expected 8 leadership members, got {len(leadership) if isinstance(leadership, list) else 'non-list'}")
+            except json.JSONDecodeError:
+                print_error("Invalid JSON response from leadership")
+                self.test_results["failed"] += 1
+                self.test_results["errors"].append("Invalid JSON response from leadership")
+        else:
+            print_error(f"Leadership API failed: {response.status_code if response else 'No response'}")
+            self.test_results["failed"] += 1
+            self.test_results["errors"].append("Leadership API failed")
+
+    def test_events_upload_api(self):
+        """Test 7: Events Upload API - NEW FEATURE"""
+        print_header("Testing Events Upload API (NEW FEATURE)")
+        
+        if not self.access_token:
+            print_error("No access token available for upload test")
+            self.test_results["failed"] += 1
+            self.test_results["errors"].append("No access token for events upload test")
+            return
+        
+        # Create a simple test image file
+        import io
+        test_image_content = b"fake_image_data_for_testing"
+        
+        # Test events upload endpoint
+        files = {"file": ("test_image.jpg", io.BytesIO(test_image_content), "image/jpeg")}
+        headers = {"Authorization": f"Bearer {self.access_token}"}
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/events/upload",
+                files=files,
+                headers=headers,
+                timeout=30
+            )
+            
+            if response.status_code == 200:
+                try:
+                    result = response.json()
+                    if "filename" in result and "image_url" in result and "message" in result:
+                        print_success("Events upload API working - file uploaded successfully")
+                        self.test_results["passed"] += 1
+                        
+                        # Test if the uploaded image can be accessed
+                        image_url = result["image_url"]
+                        if image_url.startswith("/api/uploads/events/"):
+                            print_success("Events upload returns correct image URL format")
+                        else:
+                            print_warning(f"Unexpected image URL format: {image_url}")
+                    else:
+                        print_error("Events upload response missing required fields")
+                        self.test_results["failed"] += 1
+                        self.test_results["errors"].append("Events upload response missing required fields")
+                except json.JSONDecodeError:
+                    print_error("Invalid JSON response from events upload")
+                    self.test_results["failed"] += 1
+                    self.test_results["errors"].append("Invalid JSON response from events upload")
+            else:
+                print_error(f"Events upload failed with status {response.status_code}: {response.text}")
+                self.test_results["failed"] += 1
+                self.test_results["errors"].append(f"Events upload failed with status {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            print_error(f"Events upload request failed: {str(e)}")
+            self.test_results["failed"] += 1
+            self.test_results["errors"].append(f"Events upload request failed: {str(e)}")
+
+    def test_gallery_upload_api(self):
+        """Test 8: Gallery Upload API - NEW FEATURE"""
+        print_header("Testing Gallery Upload API (NEW FEATURE)")
+        
+        if not self.access_token:
+            print_error("No access token available for upload test")
+            self.test_results["failed"] += 1
+            self.test_results["errors"].append("No access token for gallery upload test")
+            return
+        
+        # Create a simple test image file
+        import io
+        test_image_content = b"fake_image_data_for_testing"
+        
+        # Test gallery upload endpoint
+        files = {"file": ("test_gallery.png", io.BytesIO(test_image_content), "image/png")}
+        headers = {"Authorization": f"Bearer {self.access_token}"}
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/gallery/upload",
+                files=files,
+                headers=headers,
+                timeout=30
+            )
+            
+            if response.status_code == 200:
+                try:
+                    result = response.json()
+                    if "filename" in result and "image_url" in result and "message" in result:
+                        print_success("Gallery upload API working - file uploaded successfully")
+                        self.test_results["passed"] += 1
+                        
+                        # Test if the uploaded image can be accessed
+                        image_url = result["image_url"]
+                        if image_url.startswith("/api/uploads/gallery/"):
+                            print_success("Gallery upload returns correct image URL format")
+                            
+                            # Test accessing the uploaded image
+                            filename = image_url.split("/")[-1]
+                            image_response = self.make_request("GET", f"/uploads/gallery/{filename}")
+                            if image_response and image_response.status_code == 200:
+                                print_success("Uploaded gallery image is accessible via URL")
+                                self.test_results["passed"] += 1
+                            else:
+                                print_error(f"Cannot access uploaded gallery image: {image_response.status_code if image_response else 'No response'}")
+                                self.test_results["failed"] += 1
+                                self.test_results["errors"].append("Cannot access uploaded gallery image")
+                        else:
+                            print_warning(f"Unexpected image URL format: {image_url}")
+                    else:
+                        print_error("Gallery upload response missing required fields")
+                        self.test_results["failed"] += 1
+                        self.test_results["errors"].append("Gallery upload response missing required fields")
+                except json.JSONDecodeError:
+                    print_error("Invalid JSON response from gallery upload")
+                    self.test_results["failed"] += 1
+                    self.test_results["errors"].append("Invalid JSON response from gallery upload")
+            else:
+                print_error(f"Gallery upload failed with status {response.status_code}: {response.text}")
+                self.test_results["failed"] += 1
+                self.test_results["errors"].append(f"Gallery upload failed with status {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            print_error(f"Gallery upload request failed: {str(e)}")
+            self.test_results["failed"] += 1
+            self.test_results["errors"].append(f"Gallery upload request failed: {str(e)}")
+
     def test_forms_api(self):
-        """Test 6: Forms API (Contact, Join, Donate)"""
+        """Test 9: Forms API (Contact, Join, Donate)"""
         print_header("Testing Forms API")
         
         # Test contact form
