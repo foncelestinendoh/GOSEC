@@ -17,6 +17,7 @@ from routes.forms_routes import router as forms_router
 from routes.programs_routes import router as programs_router
 from routes.gallery_routes import router as gallery_router
 from routes.events_routes import router as events_router
+from routes.leadership_routes import router as leadership_router
 
 
 ROOT_DIR = Path(__file__).parent
