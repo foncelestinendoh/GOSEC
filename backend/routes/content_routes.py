@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 from bson import ObjectId
 
-from ..database import db
+from backend.database import db
 from .auth_routes import get_current_admin
 
 router = APIRouter(prefix="/api", tags=["content"])
