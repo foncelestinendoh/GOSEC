@@ -119,6 +119,9 @@ backend:
       - working: true
         agent: "main"
         comment: "Admin login with JWT working (admin/gosec_admin)"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Auth login API working correctly - admin/gosec_admin credentials return access_token and bearer token_type"
 
   - task: "Content API (Hero & About)"
     implemented: true
