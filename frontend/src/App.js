@@ -27,6 +27,7 @@ import AdminProgramsPage from "@/pages/admin/AdminProgramsPage";
 import AdminEventsPage from "@/pages/admin/AdminEventsPage";
 import AdminGalleryPage from "@/pages/admin/AdminGalleryPage";
 import AdminFormsPage from "@/pages/admin/AdminFormsPage";
+import AdminLeadershipPage from "@/pages/admin/AdminLeadershipPage";
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
