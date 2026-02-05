@@ -166,6 +166,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/admin/leadership"
+              element={
+                <ProtectedRoute>
+                  <AdminLeadershipPage />
+                </ProtectedRoute>
+              }
+            />
             
             {/* Public site routes */}
             <Route path="/*" element={<PublicSite />} />
