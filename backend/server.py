@@ -14,6 +14,9 @@ from datetime import datetime, timezone
 from routes.auth_routes import router as auth_router
 from routes.content_routes import router as content_router
 from routes.forms_routes import router as forms_router
+from routes.programs_routes import router as programs_router
+from routes.gallery_routes import router as gallery_router
+from routes.events_routes import router as events_router
 
 
 ROOT_DIR = Path(__file__).parent
