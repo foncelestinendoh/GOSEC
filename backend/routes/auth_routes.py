@@ -6,7 +6,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
-from ..database import db
+from backend.database import db
 
 SECRET_KEY = "gosec-demo-secret-key-change-me"
 ALGORITHM = "HS256"
