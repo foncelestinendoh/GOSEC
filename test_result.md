@@ -360,7 +360,9 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Frontend Forms - Backend Integration"
+    - "Leadership API"
+    - "Events Upload API" 
+    - "Gallery Upload API"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -370,3 +372,5 @@ agent_communication:
     message: "Implemented admin UI, backend CRUD APIs for programs/gallery/events, wired frontend forms to backend, and updated brand colors to navy blue and ox-blood red. Ready for backend testing."
   - agent: "testing"
     message: "✅ BACKEND TESTING COMPLETE: All 6 backend API groups tested successfully - Auth (admin login), Content (hero/about), Programs (5 defaults + soccer endpoint), Gallery (6 items with images), Events (4 items with dates/locations), Forms (contact/join/donate). All APIs returning proper JSON responses with expected fields. Backend is fully functional."
+  - agent: "testing"
+    message: "✅ NEW FEATURES TESTING COMPLETE: Successfully tested Leadership API (8 members with Jean-Pierre Mbeki as first), Events Upload API (file upload with auth), and Gallery Upload API (file upload + image serving). All upload endpoints require authentication and return proper image URLs. All 14 backend tests passed."
