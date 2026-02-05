@@ -11,9 +11,9 @@ import uuid
 from datetime import datetime, timezone
 
 # Import route modules
-from backend.routes.auth_routes import router as auth_router
-from backend.routes.content_routes import router as content_router
-from backend.routes.forms_routes import router as forms_router
+from routes.auth_routes import router as auth_router
+from routes.content_routes import router as content_router
+from routes.forms_routes import router as forms_router
 
 
 ROOT_DIR = Path(__file__).parent
