@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster, toast } from "@/components/ui/sonner";
 import GosecLayout from "@/components/GosecLayout";
 import { JoinProgramDialog } from "@/components/sections/forms/JoinProgramDialog";
@@ -17,8 +17,33 @@ import GalleryPage from "@/pages/GalleryPage";
 import EventsPage from "@/pages/EventsPage";
 import ProgramDetailPage from "@/pages/ProgramDetailPage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 
-const Home = () => {
+// Admin pages
+import AdminLoginPage from "@/pages/admin/AdminLoginPage";
+import AdminDashboard from "@/pages/admin/AdminDashboard";
+import AdminContentPage from "@/pages/admin/AdminContentPage";
+import AdminProgramsPage from "@/pages/admin/AdminProgramsPage";
+import AdminEventsPage from "@/pages/admin/AdminEventsPage";
+import AdminGalleryPage from "@/pages/admin/AdminGalleryPage";
+import AdminFormsPage from "@/pages/admin/AdminFormsPage";
+
+// Protected route wrapper
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, loading } = useAuth();
+  
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/admin" replace />;
+  }
+  
+  return children;
+};
+
+const PublicSite = () => {
   const [openJoin, setOpenJoin] = useState(false);
   const [openDonate, setOpenDonate] = useState(false);
   const [openContact, setOpenContact] = useState(false);
@@ -26,10 +51,10 @@ const Home = () => {
   const handleFormSubmitted = (type) => {
     toast.success(
       type === "join"
-        ? "Thank you – your interest in GOSEC programs has been saved locally (mock)."
+        ? "Thank you – your interest in GOSEC programs has been submitted!"
         : type === "donate"
-        ? "Thank you – your donation pledge has been stored locally (mock)."
-        : "Your contact request has been stored locally (mock)."
+        ? "Thank you – your donation pledge has been submitted!"
+        : "Your contact request has been submitted!"
     );
   };
 
@@ -80,7 +105,6 @@ const Home = () => {
         onOpenChange={setOpenContact}
         onSubmitted={() => handleFormSubmitted("contact")}
       />
-      <Toaster richColors position="bottom-right" />
     </GosecLayout>
   );
 };
@@ -88,9 +112,66 @@ const Home = () => {
 function App() {
   return (
     <BrowserRouter>
-      <LanguageProvider>
-        <Home />
-      </LanguageProvider>
+      <AuthProvider>
+        <LanguageProvider>
+          <Routes>
+            {/* Admin routes */}
+            <Route path="/admin" element={<AdminLoginPage />} />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/content"
+              element={
+                <ProtectedRoute>
+                  <AdminContentPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/programs"
+              element={
+                <ProtectedRoute>
+                  <AdminProgramsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/events"
+              element={
+                <ProtectedRoute>
+                  <AdminEventsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/gallery"
+              element={
+                <ProtectedRoute>
+                  <AdminGalleryPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/forms"
+              element={
+                <ProtectedRoute>
+                  <AdminFormsPage />
+                </ProtectedRoute>
+              }
+            />
+            
+            {/* Public site routes */}
+            <Route path="/*" element={<PublicSite />} />
+          </Routes>
+          <Toaster richColors position="bottom-right" />
+        </LanguageProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
