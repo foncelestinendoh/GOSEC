@@ -343,17 +343,65 @@ frontend:
         agent: "testing"
         comment: "✅ TESTED: Contact form on /contact page working correctly with all required fields (first name, email, message). Form properly integrated with backend API via ContactDialog component."
 
-  - task: "Brand Colors Update"
+  - task: "About Page Leadership Display"
     implemented: true
     working: true
-    file: "frontend/src/index.css"
+    file: "frontend/src/components/sections/AboutSection.jsx"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
       - working: true
-        agent: "main"
-        comment: "Navy blue, ox-blood red, black, white palette applied"
+        agent: "testing"
+        comment: "✅ TESTED: About page (/about) displays 8 leadership team members correctly. Each member shows photo (from backend API), name (e.g., Jean-Pierre Mbeki), and role in current language (e.g., 'Founder & President'). Images loading properly from backend URLs. Leadership section fully functional."
+
+  - task: "Language Toggle Functionality"
+    implemented: true
+    working: true
+    file: "frontend/src/contexts/LanguageContext.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: EN/FR language toggle working correctly. Buttons visible in header. Role text changes from 'Founder & President' (EN) to 'Fondateur et Président' (FR) when toggled. Language context properly updating leadership roles on About page."
+
+  - task: "Admin Leadership Management UI"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/admin/AdminLeadershipPage.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Admin leadership management working correctly. Login successful with admin/gosec_admin. Leadership page shows all 8 members. Edit dialog opens with photo upload area (hidden file input + clickable upload area). Photo upload functionality present with image preview and URL option."
+
+  - task: "Admin Gallery Image Upload"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/admin/AdminGalleryPage.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Admin gallery management working correctly. 'Add Image' button opens dialog with image upload area. Upload section shows 'Click to upload image' with file type specifications (JPG, PNG, GIF, WebP max 10MB). Alternative image URL input also available."
+
+  - task: "Admin Events Image Upload"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/admin/AdminEventsPage.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Admin events management working correctly. 'Add Event' button opens dialog with event image upload area. Upload section shows 'Click to upload image' functionality. Form includes all required fields (dates, titles, locations in EN/FR) plus image upload capability."
 
 metadata:
   created_by: "main_agent"
