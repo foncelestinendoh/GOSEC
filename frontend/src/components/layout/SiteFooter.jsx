@@ -62,7 +62,7 @@ export const SiteFooter = () => {
                 aria-label="Instagram"
                 className="inline-flex items-center gap-2 text-gray-300 hover:text-white"
               >
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full text-white bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af]">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--brand-oxblood)] text-white">
                   <span className="text-xs font-semibold" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"' }}>
                     ig
                   </span>
