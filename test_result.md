@@ -167,6 +167,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "✅ TESTED: Gallery API working correctly - returns 6 default gallery items with image URLs"
+      - working: true
+        agent: "testing"
+        comment: "✅ RE-TESTED: Gallery API working correctly - returns 7+ items (6 defaults + uploaded items) with image URLs. Upload functionality verified."
 
   - task: "Events CRUD API"
     implemented: true
@@ -182,6 +185,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "✅ TESTED: Events API working correctly - returns 4 default events with dates and locations"
+      - working: true
+        agent: "testing"
+        comment: "✅ RE-TESTED: Events API working correctly - returns 4 default events. Upload functionality verified with POST /api/events/upload."
 
   - task: "Forms API (Join, Donate, Contact)"
     implemented: true
@@ -197,6 +203,45 @@ backend:
       - working: true
         agent: "testing"
         comment: "✅ TESTED: All forms APIs working correctly - contact, join, and donate forms accept submissions and return proper responses"
+      - working: true
+        agent: "testing"
+        comment: "✅ RE-TESTED: All forms APIs working correctly - contact, join, and donate forms accept submissions and return proper responses"
+
+  - task: "Leadership API"
+    implemented: true
+    working: true
+    file: "backend/routes/leadership_routes.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Leadership API working correctly - returns 8 team members with Jean-Pierre Mbeki as first member with role 'Founder & President'. All members have required fields (name, role_en, role_fr, bio, email, image_url)."
+
+  - task: "Events Upload API"
+    implemented: true
+    working: true
+    file: "backend/routes/events_routes.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Events upload API working correctly - POST /api/events/upload accepts file uploads with authentication, returns filename, image_url, and success message. Image URLs follow correct format /api/uploads/events/{filename}."
+
+  - task: "Gallery Upload API"
+    implemented: true
+    working: true
+    file: "backend/routes/gallery_routes.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Gallery upload API working correctly - POST /api/gallery/upload accepts file uploads with authentication, returns filename, image_url, and success message. Uploaded images are accessible via GET /api/uploads/gallery/{filename}."
 
 frontend:
   - task: "Admin Login Page"
