@@ -119,7 +119,7 @@ export const SiteFooter = () => {
         </div>
       </div>
       <div className="border-t border-gray-700 bg-[#0F1F33] mt-4">
-        <div className="container max-w-[1200px] mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2 text-[10px] text-[var(--text-light)]">
+        <div className="container max-w-[1200px] mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2 text-[10px] text-gray-400">
           <span>
             {isEn
               ? "Based in Gatineau and Ottawa"
