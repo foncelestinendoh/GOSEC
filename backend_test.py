@@ -545,17 +545,24 @@ class GOSECAPITester:
 
     def run_all_tests(self):
         """Run all API tests"""
-        print_info(f"Starting GOSEC Backend API Tests")
+        print_info(f"Starting GOSEC Backend API Tests - Focus on NEW UPLOAD FEATURES")
         print_info(f"Backend URL: {self.base_url}")
         print_info(f"Test started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
-        # Run tests in order
+        # Run tests in order - Auth first for token
         self.test_auth_login()
+        
+        # Test existing APIs
         self.test_content_apis()
         self.test_programs_api()
         self.test_gallery_api()
         self.test_events_api()
         self.test_forms_api()
+        
+        # Test NEW FEATURES - Leadership and Upload APIs
+        self.test_leadership_api()
+        self.test_events_upload_api()
+        self.test_gallery_upload_api()
         
         # Print summary
         self.print_summary()
