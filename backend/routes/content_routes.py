@@ -5,7 +5,7 @@ from datetime import datetime
 from bson import ObjectId
 
 from backend.database import db
-from .auth_routes import get_current_admin
+from backend.routes.auth_routes import get_current_admin
 
 router = APIRouter(prefix="/api", tags=["content"])
 
