@@ -208,6 +208,15 @@ const AdminDashboard = () => {
                       </div>
                     </Button>
                   </Link>
+                  <Link to="/admin/leadership">
+                    <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
+                      <UserCircle size={20} />
+                      <div className="text-left">
+                        <div className="font-medium">Leadership Team</div>
+                        <div className="text-xs text-gray-500">Manage team members</div>
+                      </div>
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
