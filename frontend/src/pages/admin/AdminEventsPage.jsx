@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { ArrowLeft, Plus, Edit, Trash2, Loader2, Save } from 'lucide-react';
+import { ArrowLeft, Plus, Edit, Trash2, Loader2, Save, Upload } from 'lucide-react';
 import { eventsApi } from '@/services/api';
 import { toast } from 'sonner';
+
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || '';
 
 const AdminEventsPage = () => {
   const [events, setEvents] = useState([]);
@@ -15,6 +17,9 @@ const AdminEventsPage = () => {
   const [editDialog, setEditDialog] = useState(false);
   const [currentEvent, setCurrentEvent] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState('');
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     fetchEvents();
@@ -32,9 +37,18 @@ const AdminEventsPage = () => {
     }
   };
 
+  const getImageUrl = (url) => {
+    if (!url) return '';
+    if (url.startsWith('/api/')) {
+      return `${API_BASE_URL}${url}`;
+    }
+    return url;
+  };
+
   const openEditDialog = (event = null) => {
     if (event) {
       setCurrentEvent({ ...event });
+      setPreviewUrl(getImageUrl(event.image_url));
     } else {
       setCurrentEvent({
         date_en: '',
@@ -48,7 +62,9 @@ const AdminEventsPage = () => {
         image_url: '',
         order: events.length + 1
       });
+      setPreviewUrl('');
     }
+    setSelectedFile(null);
     setEditDialog(true);
   };
 
@@ -56,17 +72,51 @@ const AdminEventsPage = () => {
     setCurrentEvent(prev => ({ ...prev, [field]: value }));
   };
 
+  const handleFileSelect = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+      if (!allowedTypes.includes(file.type)) {
+        toast.error('Please select a valid image file (JPG, PNG, GIF, or WebP)');
+        return;
+      }
+      if (file.size > 10 * 1024 * 1024) {
+        toast.error('Image file must be less than 10MB');
+        return;
+      }
+      setSelectedFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => setPreviewUrl(reader.result);
+      reader.readAsDataURL(file);
+    }
+  };
+
   const saveEvent = async () => {
+    if (!currentEvent.title_en || !currentEvent.title_fr || !currentEvent.date_en) {
+      toast.error('Please fill in required fields (Title and Date)');
+      return;
+    }
+
     setSaving(true);
     try {
       if (currentEvent.id) {
-        await eventsApi.update(currentEvent.id, currentEvent);
+        if (selectedFile) {
+          await eventsApi.updateWithImage(currentEvent.id, currentEvent, selectedFile);
+        } else {
+          await eventsApi.update(currentEvent.id, currentEvent);
+        }
         toast.success('Event updated!');
       } else {
-        await eventsApi.create(currentEvent);
+        if (selectedFile) {
+          await eventsApi.createWithImage(currentEvent, selectedFile);
+        } else {
+          await eventsApi.create(currentEvent);
+        }
         toast.success('Event created!');
       }
       setEditDialog(false);
+      setSelectedFile(null);
+      setPreviewUrl('');
       fetchEvents();
     } catch (err) {
       console.error('Error saving event:', err);
@@ -119,10 +169,17 @@ const AdminEventsPage = () => {
           {events.map((event) => (
             <Card key={event.id}>
               <CardContent className="p-4">
-                <div className="flex items-center justify-between">
+                <div className="flex items-start gap-4">
+                  {event.image_url && (
+                    <img 
+                      src={getImageUrl(event.image_url)} 
+                      alt={event.title_en}
+                      className="w-32 h-20 object-cover rounded"
+                    />
+                  )}
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <span className="text-sm font-medium text-[var(--brand-dark)] bg-[var(--bg-subtle)] px-3 py-1 rounded-full">
+                      <span className="text-sm font-medium text-[var(--brand-oxblood)] bg-red-50 px-3 py-1 rounded-full">
                         {event.date_en}
                       </span>
                       <h3 className="font-semibold text-lg">{event.title_en}</h3>
@@ -130,7 +187,7 @@ const AdminEventsPage = () => {
                     <p className="text-sm text-gray-500 mt-1">{event.location_en}</p>
                     <p className="text-sm mt-2 text-gray-600 line-clamp-2">{event.summary_en}</p>
                   </div>
-                  <div className="flex gap-2 ml-4">
+                  <div className="flex gap-2">
                     <Button variant="outline" size="sm" onClick={() => openEditDialog(event)}>
                       <Edit size={16} />
                     </Button>
@@ -151,9 +208,48 @@ const AdminEventsPage = () => {
               <DialogTitle>{currentEvent?.id ? 'Edit Event' : 'Add Event'}</DialogTitle>
             </DialogHeader>
             <div className="space-y-4">
+              {/* Image Upload */}
+              <div>
+                <label className="block mb-2 text-sm font-medium">Event Image</label>
+                <div 
+                  className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-[var(--brand-navy)] transition-colors"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/gif,image/webp"
+                    onChange={handleFileSelect}
+                    className="hidden"
+                  />
+                  <Upload size={24} className="mx-auto mb-2 text-gray-400" />
+                  <p className="text-sm text-gray-600">
+                    {selectedFile ? selectedFile.name : 'Click to upload image'}
+                  </p>
+                </div>
+                {previewUrl && (
+                  <div className="mt-3 aspect-video bg-gray-100 rounded-lg overflow-hidden max-h-40">
+                    <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
+                  </div>
+                )}
+                <div className="mt-2">
+                  <label className="block mb-1 text-xs text-gray-500">Or Image URL</label>
+                  <Input
+                    value={currentEvent?.image_url || ''}
+                    onChange={(e) => {
+                      handleChange('image_url', e.target.value);
+                      setSelectedFile(null);
+                      setPreviewUrl(e.target.value);
+                    }}
+                    placeholder="https://..."
+                    disabled={!!selectedFile}
+                  />
+                </div>
+              </div>
+
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block mb-2 text-sm font-medium">Date (English)</label>
+                  <label className="block mb-2 text-sm font-medium">Date (English) *</label>
                   <Input
                     value={currentEvent?.date_en || ''}
                     onChange={(e) => handleChange('date_en', e.target.value)}
@@ -161,7 +257,7 @@ const AdminEventsPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block mb-2 text-sm font-medium">Date (French)</label>
+                  <label className="block mb-2 text-sm font-medium">Date (French) *</label>
                   <Input
                     value={currentEvent?.date_fr || ''}
                     onChange={(e) => handleChange('date_fr', e.target.value)}
@@ -171,14 +267,14 @@ const AdminEventsPage = () => {
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block mb-2 text-sm font-medium">Title (English)</label>
+                  <label className="block mb-2 text-sm font-medium">Title (English) *</label>
                   <Input
                     value={currentEvent?.title_en || ''}
                     onChange={(e) => handleChange('title_en', e.target.value)}
                   />
                 </div>
                 <div>
-                  <label className="block mb-2 text-sm font-medium">Title (French)</label>
+                  <label className="block mb-2 text-sm font-medium">Title (French) *</label>
                   <Input
                     value={currentEvent?.title_fr || ''}
                     onChange={(e) => handleChange('title_fr', e.target.value)}
@@ -219,27 +315,22 @@ const AdminEventsPage = () => {
                   />
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-2 text-sm font-medium">Image URL</label>
-                  <Input
-                    value={currentEvent?.image_url || ''}
-                    onChange={(e) => handleChange('image_url', e.target.value)}
-                    placeholder="https://..."
-                  />
-                </div>
-                <div>
-                  <label className="block mb-2 text-sm font-medium">Order</label>
-                  <Input
-                    type="number"
-                    value={currentEvent?.order || 0}
-                    onChange={(e) => handleChange('order', parseInt(e.target.value))}
-                  />
-                </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium">Order</label>
+                <Input
+                  type="number"
+                  value={currentEvent?.order || 0}
+                  onChange={(e) => handleChange('order', parseInt(e.target.value))}
+                  className="w-32"
+                />
               </div>
             </div>
             <DialogFooter>
-              <Button variant="outline" onClick={() => setEditDialog(false)}>Cancel</Button>
+              <Button variant="outline" onClick={() => {
+                setEditDialog(false);
+                setSelectedFile(null);
+                setPreviewUrl('');
+              }}>Cancel</Button>
               <Button onClick={saveEvent} disabled={saving} className="btn-primary">
                 {saving ? <Loader2 className="animate-spin mr-2" size={16} /> : <Save size={16} className="mr-2" />}
                 Save
