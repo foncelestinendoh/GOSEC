@@ -110,7 +110,7 @@ export const SiteFooter = () => {
                 href="https://www.google.com/maps/place/Gatineau,+QC,+Canada"
                 target="_blank"
                 rel="noreferrer"
-                className="link-text"
+                className="text-[var(--brand-oxblood)] hover:text-white underline"
               >
                 Gatineau–Ottawa Community Fields (example)
               </a>
