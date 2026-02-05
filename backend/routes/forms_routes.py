@@ -1,27 +1,25 @@
 from datetime import datetime
 from typing import List
+import uuid
 
-from fastapi import APIRouter
-from pydantic import BaseModel, EmailStr, Field
-from bson import ObjectId
+from fastapi import APIRouter, Depends
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 
 from database import db
+from routes.auth_routes import get_current_admin
 
 router = APIRouter(prefix="/api/forms", tags=["forms"])
 
 
-class PyObjectId(ObjectId):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
-
-    @classmethod
-    def validate(cls, v):
-        if isinstance(v, ObjectId):
-            return v
-        if not ObjectId.is_valid(v):
-            raise ValueError("Invalid objectid")
-        return ObjectId(v)
+# Helper to convert Mongo docs to response format
+def to_response(doc: dict) -> dict:
+    """Convert MongoDB doc, converting _id to string id"""
+    if doc is None:
+        return None
+    result = dict(doc)
+    if "_id" in result:
+        result["id"] = str(result.pop("_id"))
+    return result
 
 
 # Join form
@@ -32,27 +30,26 @@ class JoinFormBase(BaseModel):
     message: str = ""
 
 
-class JoinForm(JoinFormBase):
-    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+class JoinFormResponse(JoinFormBase):
+    id: str
+    created_at: datetime
 
-    class Config:
-        populate_by_name = True
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(from_attributes=True)
 
 
-@router.post("/join", response_model=JoinForm)
+@router.post("/join", response_model=JoinFormResponse)
 async def submit_join(form: JoinFormBase):
-    doc = JoinForm(**form.dict()).dict(by_alias=True)
-    res = await db.join_forms.insert_one(doc)
-    doc["_id"] = res.inserted_id
-    return doc
+    doc = form.model_dump()
+    doc["_id"] = str(uuid.uuid4())
+    doc["created_at"] = datetime.utcnow()
+    await db.join_forms.insert_one(doc)
+    return to_response(doc)
 
 
-@router.get("/join", response_model=List[JoinForm])
+@router.get("/join", response_model=List[JoinFormResponse], dependencies=[Depends(get_current_admin)])
 async def list_join():
     items = await db.join_forms.find().sort("created_at", -1).to_list(500)
-    return items
+    return [to_response(item) for item in items]
 
 
 # Donate form (pledge only)
@@ -63,27 +60,26 @@ class DonateFormBase(BaseModel):
     message: str = ""
 
 
-class DonateForm(DonateFormBase):
-    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+class DonateFormResponse(DonateFormBase):
+    id: str
+    created_at: datetime
 
-    class Config:
-        populate_by_name = True
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(from_attributes=True)
 
 
-@router.post("/donate", response_model=DonateForm)
+@router.post("/donate", response_model=DonateFormResponse)
 async def submit_donate(form: DonateFormBase):
-    doc = DonateForm(**form.dict()).dict(by_alias=True)
-    res = await db.donate_forms.insert_one(doc)
-    doc["_id"] = res.inserted_id
-    return doc
+    doc = form.model_dump()
+    doc["_id"] = str(uuid.uuid4())
+    doc["created_at"] = datetime.utcnow()
+    await db.donate_forms.insert_one(doc)
+    return to_response(doc)
 
 
-@router.get("/donate", response_model=List[DonateForm])
+@router.get("/donate", response_model=List[DonateFormResponse], dependencies=[Depends(get_current_admin)])
 async def list_donate():
     items = await db.donate_forms.find().sort("created_at", -1).to_list(500)
-    return items
+    return [to_response(item) for item in items]
 
 
 # Contact form
@@ -98,24 +94,23 @@ class ContactFormBase(BaseModel):
     message: str
 
 
-class ContactForm(ContactFormBase):
-    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+class ContactFormResponse(ContactFormBase):
+    id: str
+    created_at: datetime
 
-    class Config:
-        populate_by_name = True
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(from_attributes=True)
 
 
-@router.post("/contact", response_model=ContactForm)
+@router.post("/contact", response_model=ContactFormResponse)
 async def submit_contact(form: ContactFormBase):
-    doc = ContactForm(**form.dict()).dict(by_alias=True)
-    res = await db.contact_forms.insert_one(doc)
-    doc["_id"] = res.inserted_id
-    return doc
+    doc = form.model_dump()
+    doc["_id"] = str(uuid.uuid4())
+    doc["created_at"] = datetime.utcnow()
+    await db.contact_forms.insert_one(doc)
+    return to_response(doc)
 
 
-@router.get("/contact", response_model=List[ContactForm])
+@router.get("/contact", response_model=List[ContactFormResponse], dependencies=[Depends(get_current_admin)])
 async def list_contact():
     items = await db.contact_forms.find().sort("created_at", -1).to_list(500)
-    return items
+    return [to_response(item) for item in items]
