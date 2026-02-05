@@ -320,7 +320,7 @@ code {
   }
 
   .btn-primary {
-    background: var(--brand-dark);
+    background: var(--brand-navy);
     color: white;
     border: none;
     border-radius: 25px;
@@ -334,13 +334,13 @@ code {
   .btn-primary:hover {
     background: var(--brand-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 69, 52, 0.25);
+    box-shadow: 0 4px 12px rgba(26, 41, 66, 0.25);
   }
 
   .btn-secondary {
     background: transparent;
-    color: var(--brand-dark);
-    border: 2px solid var(--brand-dark);
+    color: var(--brand-navy);
+    border: 2px solid var(--brand-navy);
     border-radius: 25px;
     padding: 12px 30px;
     font-weight: 600;
@@ -350,7 +350,7 @@ code {
   }
 
   .btn-secondary:hover {
-    background: var(--brand-dark);
+    background: var(--brand-navy);
     color: white;
     transform: translateY(-2px);
   }
@@ -369,14 +369,14 @@ code {
     padding: 18px 36px;
     font-size: 18px;
     font-weight: 700;
-    background: var(--brand-dark);
+    background: var(--brand-oxblood);
     color: white;
     min-height: 54px;
     transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .btn-cta:hover {
-    background: var(--brand-hover);
+    background: #5C2230;
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 6px 16px rgba(0, 69, 52, 0.25);
   }
