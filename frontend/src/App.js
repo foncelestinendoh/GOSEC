@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster, toast } from "@/components/ui/sonner";
 import GosecLayout from "@/components/GosecLayout";
 import { JoinProgramDialog } from "@/components/sections/forms/JoinProgramDialog";
@@ -28,6 +28,10 @@ import AdminEventsPage from "@/pages/admin/AdminEventsPage";
 import AdminGalleryPage from "@/pages/admin/AdminGalleryPage";
 import AdminFormsPage from "@/pages/admin/AdminFormsPage";
 import AdminLeadershipPage from "@/pages/admin/AdminLeadershipPage";
+
+// Use HashRouter for GitHub Pages, BrowserRouter for other deployments
+const useHashRouter = process.env.REACT_APP_USE_HASH_ROUTER === 'true';
+const Router = useHashRouter ? HashRouter : BrowserRouter;
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -112,7 +116,7 @@ const PublicSite = () => {
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <AuthProvider>
         <LanguageProvider>
           <Routes>
@@ -181,7 +185,7 @@ function App() {
           <Toaster richColors position="bottom-right" />
         </LanguageProvider>
       </AuthProvider>
-    </BrowserRouter>
+    </Router>
   );
 }
 
