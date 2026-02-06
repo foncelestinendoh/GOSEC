@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { leadershipApi, contentApi } from "@/services/api";
+import { leadershipApi, contentApi, isBackendConfigured } from "@/services/api";
+import { staticLeadership, staticAboutContent } from "@/data/staticData";
 import { Loader2, Mail, Linkedin } from "lucide-react";
 
 const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || '';
@@ -14,6 +15,15 @@ export const AboutSection = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Check if backend is configured
+      if (!isBackendConfigured()) {
+        // Use static fallback data for GitHub Pages
+        setLeadership(staticLeadership);
+        setAboutContent(staticAboutContent);
+        setLoading(false);
+        return;
+      }
+
       try {
         const [leadershipRes, aboutRes] = await Promise.all([
           leadershipApi.getAll(),
@@ -22,7 +32,10 @@ export const AboutSection = () => {
         setLeadership(leadershipRes.data);
         setAboutContent(aboutRes.data);
       } catch (err) {
-        console.error('Error fetching about data:', err);
+        console.error('Error fetching about data, using static fallback:', err);
+        // Fall back to static data on error
+        setLeadership(staticLeadership);
+        setAboutContent(staticAboutContent);
       } finally {
         setLoading(false);
       }
@@ -32,7 +45,7 @@ export const AboutSection = () => {
 
   const getImageUrl = (url) => {
     if (!url) return '';
-    if (url.startsWith('/api/')) {
+    if (url.startsWith('/api/') && API_BASE_URL) {
       return `${API_BASE_URL}${url}`;
     }
     return url;
