@@ -2,6 +2,11 @@ import axios from 'axios';
 
 const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || '';
 
+// Check if backend is configured
+export const isBackendConfigured = () => {
+  return API_BASE_URL && API_BASE_URL.length > 0;
+};
+
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -17,6 +22,17 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+// Add response interceptor to handle missing backend gracefully
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (!isBackendConfigured()) {
+      console.warn('Backend URL not configured. API calls will not work.');
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Content APIs
 export const contentApi = {
