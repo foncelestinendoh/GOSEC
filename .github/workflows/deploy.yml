@@ -3,7 +3,10 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - GOSECNEW  # Replace with your default branch if not main
+      - GOSECNEW
+
+permissions:
+  contents: write  # This allows the Action to push to gh-pages
 
 jobs:
   build-deploy:
